@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000">
+  <rect width="800" height="1000" fill="#ededed"/>
+  <circle cx="400" cy="470" r="150" fill="none" stroke="#c7c7c7" stroke-width="2"/>
+  <circle cx="400" cy="470" r="4" fill="#c7c7c7"/>
+  <path d="M400 340v130M400 470h110" stroke="#c7c7c7" stroke-width="2"/>
+  <text x="400" y="700" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="14" letter-spacing="2" fill="#8a8a8a">NO IMAGE</text>
+</svg>

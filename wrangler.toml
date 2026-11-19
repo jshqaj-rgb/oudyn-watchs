@@ -1,0 +1,7 @@
+name = "oudyn-watchs"
+pages_build_output_dir = "apps/web/out"
+compatibility_date = "2025-11-19"
+
+[vars]
+# Set API_ORIGIN in the Cloudflare Pages dashboard for the live backend.
+# Example: https://api.oudyn.com

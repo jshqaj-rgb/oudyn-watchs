@@ -1,0 +1,21 @@
+node_modules
+.next
+out
+dist
+.DS_Store
+*.log
+
+# local caches and scratch QA artifacts
+.npm-cache
+.qa/*.png
+assets-check
+.impeccable
+
+# environment
+.env
+.env.local
+.env.*.local
+
+# local tool state
+.wrangler
+.qa

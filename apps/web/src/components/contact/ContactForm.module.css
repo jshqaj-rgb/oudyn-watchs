@@ -1,0 +1,127 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.field span {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--color-graphite);
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  padding: 12px 0;
+  border: 0;
+  border-bottom: 1px solid var(--color-black);
+  border-radius: 0;
+  background: transparent;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--color-black);
+  outline: none;
+}
+
+.field textarea {
+  resize: vertical;
+  min-height: 120px;
+  line-height: 1.6;
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+  color: #8a8a8a;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  border-bottom-color: var(--color-graphite);
+}
+
+.footer {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  padding-top: 6px;
+}
+
+.footer button {
+  flex-shrink: 0;
+  min-width: 180px;
+  height: 48px;
+  padding: 0 20px;
+  background: var(--color-black);
+  color: var(--color-white);
+  border-radius: var(--radius-panel);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+}
+
+.footer button:hover {
+  background: var(--color-hover-black);
+}
+
+.footer button:disabled {
+  opacity: .55;
+}
+
+.privacy {
+  max-width: 34ch;
+  font-size: 11px;
+  line-height: 1.6;
+  color: var(--color-graphite);
+}
+
+.privacy a {
+  border-bottom: 1px solid var(--color-graphite);
+}
+
+.status {
+  padding: 12px 0;
+  border-top: 1px solid var(--color-black);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  line-height: 1.6;
+  letter-spacing: .02em;
+  text-transform: uppercase;
+}
+
+.status[data-error] {
+  color: #505050;
+}
+
+@media (max-width: 640px) {
+  .row {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .footer {
+    flex-direction: column-reverse;
+  }
+
+  .footer button {
+    width: 100%;
+  }
+}

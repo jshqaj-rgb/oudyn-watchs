@@ -1,0 +1,145 @@
+.footer {
+  background: var(--color-white);
+  border-top: 1px solid var(--color-black);
+}
+
+.inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+  padding: 30px 0 52px;
+}
+
+.columnTitle {
+  font-family: var(--font-mono);
+  font-size: 8.5px;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-graphite);
+}
+
+.columnList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.link {
+  font-size: 10.5px;
+  line-height: 1.35;
+  color: var(--color-black);
+}
+
+.link:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.utility {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr 1fr 1.4fr;
+  gap: 24px;
+  align-items: start;
+  padding: 13px 0 24px;
+  border-top: 1px solid var(--color-black);
+}
+
+.clock,
+.address,
+.legalLinks,
+.shipping > span {
+  font-family: var(--font-mono);
+  font-size: 7.5px;
+  line-height: 1.7;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--color-graphite);
+}
+
+.address {
+  margin: 0;
+}
+
+.legalLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.legalLinks a:hover {
+  color: var(--color-black);
+}
+
+.shipping {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  text-align: right;
+}
+
+.copyright {
+  font-family: var(--font-mono);
+  font-size: 7px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--color-graphite);
+}
+
+.payments {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.pay {
+  width: 26px;
+  height: 16px;
+  display: block;
+}
+
+@media (max-width: 1023px) {
+  .columns {
+    gap: 24px 20px;
+    padding: 26px 0 40px;
+  }
+
+  .utility {
+    grid-template-columns: 1fr 1fr;
+    gap: 18px 24px;
+  }
+
+  .shipping {
+    align-items: flex-start;
+    text-align: left;
+  }
+}
+
+@media (max-width: 767px) {
+  .inner {
+    padding: 0 12px;
+  }
+
+  .columns {
+    grid-template-columns: 1fr 1fr;
+    gap: 28px 18px;
+    padding: 24px 0 34px;
+  }
+
+  .utility {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .shipping {
+    align-items: flex-start;
+  }
+}

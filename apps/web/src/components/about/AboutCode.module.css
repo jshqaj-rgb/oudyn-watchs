@@ -1,0 +1,150 @@
+.code {
+  padding: 68px 0 76px;
+  background: var(--color-white);
+  border-top: 1px solid var(--color-steel-gray);
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  gap: clamp(32px, 6vw, 88px);
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.kicker {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-graphite);
+}
+
+.title {
+  max-width: 380px;
+  margin-top: 16px;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+}
+
+.body {
+  max-width: 380px;
+  margin-top: 14px;
+  font-size: 11.5px;
+  line-height: 1.75;
+  color: var(--color-graphite);
+}
+
+.form {
+  display: flex;
+  max-width: 420px;
+  margin-top: 26px;
+  border: 1px solid var(--color-steel-gray);
+  border-radius: var(--radius-panel);
+  overflow: hidden;
+}
+
+.field {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  padding: 8px 12px;
+}
+
+.field span {
+  font-family: var(--font-mono);
+  font-size: 6.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-graphite);
+}
+
+.field input {
+  width: 100%;
+  padding: 2px 0;
+  border: 0;
+  background: transparent;
+  font-size: 11px;
+}
+
+.form button {
+  flex: none;
+  padding: 0 16px;
+  background: var(--color-black);
+  color: var(--color-white);
+  font-family: var(--font-mono);
+  font-size: 7.5px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.form button:disabled {
+  opacity: 0.6;
+}
+
+.status {
+  margin-top: 10px;
+  font-family: var(--font-mono);
+  font-size: 7.5px;
+  letter-spacing: 0.03em;
+  color: var(--color-graphite);
+}
+
+.rules {
+  border-top: 1px solid var(--color-black);
+}
+
+.rules li {
+  display: grid;
+  grid-template-columns: 38px minmax(0, 1fr);
+  gap: 10px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--color-steel-gray);
+}
+
+.rules span {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 0.04em;
+  color: var(--color-graphite);
+}
+
+.rules p {
+  font-size: 11.5px;
+  line-height: 1.5;
+}
+
+@media (max-width: 1023px) {
+  .code {
+    padding: 48px 0 54px;
+  }
+
+  .inner {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+    padding: 0 24px;
+  }
+}
+
+@media (max-width: 767px) {
+  .inner {
+    padding: 0 16px;
+  }
+
+  .title {
+    font-size: 18px;
+  }
+
+  .form {
+    flex-direction: column;
+  }
+
+  .form button {
+    height: 40px;
+  }
+}

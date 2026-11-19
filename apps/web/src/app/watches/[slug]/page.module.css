@@ -1,0 +1,147 @@
+.page {
+  background: var(--color-white);
+}
+
+.shell {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) clamp(360px, 27vw, 400px);
+  align-items: stretch;
+  background: #ededed;
+}
+
+.bands {
+  display: flex;
+  flex-direction: column;
+}
+
+.band {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  max-height: 760px;
+  overflow: hidden;
+  background: var(--color-black);
+}
+
+.bandImage {
+  object-fit: cover;
+}
+
+.related {
+  padding: 64px 0 72px;
+  background: var(--color-white);
+}
+
+.relatedInner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.relatedHead {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding-bottom: 16px;
+}
+
+.relatedTitle {
+  font-family: var(--font-mono);
+  font-size: 8.5px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.relatedCount {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 8px;
+  color: var(--color-graphite);
+}
+
+.relatedLink {
+  padding: 7px 16px;
+  border: 1px solid var(--color-black);
+  border-radius: var(--radius-panel);
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.relatedNext {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.relatedGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+@media (max-width: 1199px) {
+  .shell {
+    grid-template-columns: minmax(0, 1fr) 360px;
+  }
+
+  .relatedInner {
+    padding: 0 24px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .shell {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .band {
+    aspect-ratio: 4 / 3;
+    max-height: none;
+  }
+
+  .relatedGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+}
+
+@media (max-width: 767px) {
+  .related {
+    padding: 40px 0 52px;
+  }
+
+  .relatedInner {
+    padding: 0 16px;
+  }
+
+  .relatedHead {
+    gap: 10px;
+  }
+
+  .relatedNext {
+    display: none;
+  }
+}
+
+
+.mobileGallery {
+  display: none;
+}
+
+@media (max-width: 1023px) {
+  .mobileGallery {
+    display: grid;
+    gap: 2px;
+    width: 100%;
+    background: #ededed;
+  }
+
+  .mobileShot {
+    position: relative;
+    aspect-ratio: 1 / 1.06;
+  }
+}

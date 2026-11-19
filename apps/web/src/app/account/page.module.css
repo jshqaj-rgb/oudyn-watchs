@@ -1,0 +1,146 @@
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  gap: 64px;
+  align-items: start;
+  border-top: 1px solid var(--color-black);
+}
+
+.rows {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr);
+  gap: 20px;
+  padding: 26px 0;
+  border-bottom: 1px solid var(--color-steel-gray);
+}
+
+.number {
+  padding-top: 2px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  color: var(--color-graphite);
+}
+
+.rowTitle {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.rowBody {
+  max-width: 560px;
+  margin-top: 7px;
+  font-size: 13px;
+  line-height: 1.75;
+  color: var(--color-graphite);
+}
+
+.panel {
+  position: sticky;
+  top: 96px;
+  padding: 24px;
+  background: var(--color-white);
+  border-radius: var(--radius-panel);
+}
+
+.panelLabel {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-graphite);
+}
+
+.panelBody {
+  margin-top: 10px;
+  font-size: 12px;
+  line-height: 1.75;
+  color: var(--color-graphite);
+}
+
+.primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 46px;
+  margin-top: 20px;
+  padding: 0 16px;
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--color-white);
+  background: var(--color-black);
+  border-radius: var(--radius-panel);
+  transition: background 180ms var(--ease);
+}
+
+.primary:hover {
+  background: var(--color-hover-black);
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  margin-top: 22px;
+  border-top: 1px solid var(--color-black);
+}
+
+.links a {
+  padding: 9px 0;
+  border-bottom: 1px solid var(--color-steel-gray);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.links a:hover {
+  color: var(--color-graphite);
+}
+
+.panelNote {
+  margin-top: 18px;
+  font-family: var(--font-mono);
+  font-size: 8px;
+  line-height: 1.7;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-graphite);
+}
+
+@media (max-width: 1023px) {
+  .layout {
+    grid-template-columns: minmax(0, 1fr) 300px;
+    gap: 36px;
+  }
+
+  .panel {
+    top: 88px;
+    padding: 20px;
+  }
+}
+
+@media (max-width: 767px) {
+  .layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+  }
+
+  .row {
+    grid-template-columns: 32px minmax(0, 1fr);
+    gap: 14px;
+    padding: 22px 0;
+  }
+
+  .panel {
+    position: static;
+    padding: 20px;
+  }
+}

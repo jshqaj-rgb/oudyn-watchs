@@ -1,0 +1,158 @@
+.card {
+  position: relative;
+  min-width: 0;
+}
+
+.link {
+  display: block;
+  color: inherit;
+}
+
+.media {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: #ececec;
+  border-radius: 2px;
+}
+
+.image {
+  object-fit: cover;
+  transition: transform 500ms var(--ease);
+}
+
+.card:hover .image {
+  transform: scale(1.025);
+}
+
+.spec,
+.collection,
+.archive {
+  position: absolute;
+  z-index: 2;
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-graphite);
+}
+
+.spec {
+  top: 12px;
+  left: 12px;
+}
+
+.collection {
+  top: 12px;
+  right: 12px;
+  color: var(--color-black);
+}
+
+.archive {
+  right: 12px;
+  bottom: 12px;
+  padding: 3px 5px;
+  color: var(--color-white);
+  background: rgba(0, 0, 0, 0.72);
+}
+
+.info {
+  padding-top: 12px;
+}
+
+.infoTop {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.name {
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: 0.005em;
+}
+
+.price {
+  flex: none;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  white-space: nowrap;
+}
+
+.subtitle {
+  margin-top: 3px;
+  font-size: 11px;
+  line-height: 1.4;
+  color: var(--color-graphite);
+}
+
+.infoFoot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 7px;
+}
+
+.meta {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-graphite);
+}
+
+.dots {
+  display: inline-flex;
+  gap: 3px;
+}
+
+.dots i {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--color-steel-gray);
+}
+
+.dots i:first-child {
+  background: var(--color-black);
+}
+
+.archivedCard .image {
+  filter: grayscale(1);
+  opacity: 0.78;
+}
+
+@media (max-width: 767px) {
+  .spec,
+  .collection {
+    top: 9px;
+    font-size: 7px;
+  }
+
+  .spec {
+    left: 9px;
+  }
+
+  .collection {
+    right: 9px;
+  }
+
+  .name {
+    font-size: 12px;
+  }
+
+  .price {
+    font-size: 9px;
+  }
+
+  .subtitle {
+    font-size: 10px;
+  }
+
+  .meta {
+    font-size: 7px;
+  }
+}

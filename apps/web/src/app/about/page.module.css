@@ -1,0 +1,393 @@
+.timeline {
+  padding: 0 0 24px;
+  background: var(--color-white);
+}
+
+.inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.sectionLabel {
+  padding: 18px 0 14px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.entries {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.entry {
+  display: grid;
+  grid-template-columns: minmax(0, 1.62fr) minmax(0, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+
+.media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--color-steel-gray);
+}
+
+.image {
+  object-fit: cover;
+  transition: transform 600ms ease;
+}
+
+.entry:hover .image {
+  transform: scale(1.015);
+}
+
+.entry:nth-child(1) .image,
+.entry:nth-child(6) .image {
+  object-fit: cover;
+}
+
+.entry:nth-child(2) .media {
+  background: #e8e8e8;
+}
+
+.entryBody {
+  padding: 2px 0 0 4px;
+  max-width: 360px;
+}
+
+.year {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 0.04em;
+  color: var(--color-graphite);
+}
+
+.entryTitle {
+  margin: 12px 0 0;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+.entryBody p {
+  margin: 8px 0 0;
+  font-size: 11px;
+  line-height: 1.7;
+  color: var(--color-graphite);
+}
+
+.more {
+  margin-top: 22px;
+}
+
+.more .entryTitle {
+  margin-top: 0;
+}
+
+
+.quote {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: var(--color-black);
+  color: var(--color-white);
+}
+
+.quoteMedia {
+  position: relative;
+  min-height: 420px;
+}
+
+.quoteImage {
+  object-fit: cover;
+}
+
+.quoteBody {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 48px;
+}
+
+.quoteBody blockquote {
+  max-width: 480px;
+  margin: 0;
+  font-size: clamp(20px, 2.2vw, 30px);
+  font-weight: 400;
+  line-height: 1.28;
+  letter-spacing: -0.02em;
+}
+
+.quoteBody span {
+  margin-top: 26px;
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.service {
+  padding: 0 0 26px;
+  background: var(--color-white);
+}
+
+.serviceRows {
+  border-top: 1px solid var(--color-black);
+}
+
+.serviceRow {
+  display: grid;
+  grid-template-columns: 190px minmax(0, 1fr);
+  gap: 24px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--color-steel-gray);
+  scroll-margin-top: 110px;
+}
+
+.serviceRow h3 {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.serviceRow p {
+  max-width: 620px;
+  margin: 0;
+  font-size: 10.5px;
+  line-height: 1.72;
+  color: var(--color-graphite);
+}
+
+.serviceRow a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media (max-width: 1023px) {
+  .inner {
+    padding: 0 20px;
+  }
+
+  .entry {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .entryBody {
+    order: -1;
+    max-width: 560px;
+    padding: 18px 0 12px;
+  }
+
+  .media {
+    aspect-ratio: 16 / 10;
+  }
+
+  .quote {
+    grid-template-columns: 1fr;
+  }
+
+  .quoteMedia {
+    min-height: 0;
+    aspect-ratio: 16 / 10;
+  }
+
+  .quoteBody {
+    padding: 32px 24px 36px;
+  }
+
+  .serviceRow {
+    grid-template-columns: 160px minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .inner {
+    padding: 0 12px;
+  }
+
+  .sectionLabel {
+    padding: 16px 0 12px;
+  }
+
+  .entryBody {
+    padding-top: 16px;
+  }
+
+  .entryTitle {
+    font-size: 14px;
+  }
+
+  .media {
+    aspect-ratio: 4 / 3;
+  }
+
+  .quoteMedia {
+    aspect-ratio: 4 / 3;
+  }
+
+  .quoteBody {
+    padding: 24px 16px 28px;
+  }
+
+  .quoteBody blockquote {
+    font-size: 20px;
+  }
+
+  .serviceRow {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+}
+
+.intro {
+  background: var(--color-white);
+}
+
+.introInner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.introGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  gap: 48px;
+  padding: 4px 0 32px;
+}
+
+.introGrid h2 {
+  max-width: 10ch;
+  font-size: clamp(30px, 3.6vw, 52px);
+  line-height: 1;
+  letter-spacing: -.035em;
+}
+
+.introGrid p {
+  max-width: 56ch;
+  font-size: 13px;
+  line-height: 1.8;
+  color: var(--color-graphite);
+}
+
+.introGrid p + p {
+  margin-top: 16px;
+}
+
+.introLink {
+  display: inline-block;
+  margin-top: 20px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--color-black);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-top: 1px solid var(--color-black);
+}
+
+.stats div {
+  padding: 16px 18px 18px 0;
+  border-right: 1px solid var(--color-steel-gray);
+}
+
+.stats div:last-child {
+  border-right: 0;
+}
+
+.stats strong {
+  display: block;
+  font-size: 26px;
+  font-weight: 400;
+  letter-spacing: -.03em;
+}
+
+.stats span {
+  display: block;
+  margin-top: 6px;
+  font-family: var(--font-mono);
+  font-size: 8px;
+  line-height: 1.4;
+  letter-spacing: .03em;
+  text-transform: uppercase;
+  color: var(--color-graphite);
+}
+
+.store {
+  background: var(--color-white);
+  padding-bottom: 4px;
+}
+
+.storeGrid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr;
+  gap: 8px;
+}
+
+.storeMedia {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--color-steel-gray);
+}
+
+.storeImage {
+  object-fit: cover;
+}
+
+.storeFigure figcaption {
+  margin-top: 7px;
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: .03em;
+  text-transform: uppercase;
+  color: var(--color-graphite);
+}
+
+@media (max-width: 900px) {
+  .introGrid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .stats {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .stats div:nth-child(2) {
+    border-right: 0;
+  }
+
+  .storeGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .introInner {
+    padding: 0 12px;
+  }
+
+  .introGrid {
+    padding-bottom: 24px;
+  }
+
+  .storeGrid {
+    gap: 14px;
+  }
+}

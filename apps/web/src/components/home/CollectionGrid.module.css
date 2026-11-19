@@ -1,0 +1,137 @@
+.section {
+  padding: var(--section-pad) 0;
+  background: var(--color-studio-white);
+  border-bottom: 1px solid var(--color-steel-gray);
+}
+
+.head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 28px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.tile {
+  position: relative;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: var(--radius-panel);
+  background: var(--color-black);
+  color: var(--color-white);
+}
+
+.tile[data-tone="light"] {
+  background: var(--color-white);
+  color: var(--color-black);
+}
+
+.tile[data-tone="steel"] {
+  background: var(--color-steel-gray);
+  color: var(--color-black);
+}
+
+.media {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 400ms ease;
+}
+
+.image {
+  object-fit: cover;
+  object-position: center;
+}
+
+.tile:hover .media {
+  transform: scale(1.02);
+}
+
+.top {
+  position: absolute;
+  top: 14px;
+  left: 16px;
+  right: 16px;
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-white);
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
+}
+
+.bottom {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px;
+  background: var(--color-black);
+  color: var(--color-white);
+  border-radius: 2px;
+}
+
+.name {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.arrow {
+  font-size: 14px;
+  line-height: 1;
+  transition: transform 200ms var(--ease);
+}
+
+.tile:hover .arrow {
+  transform: translateX(4px);
+}
+
+@media (max-width: 767px) {
+  .head {
+    margin-bottom: 20px;
+  }
+
+  .top {
+    top: 10px;
+    left: 12px;
+    right: 12px;
+    font-size: 7px;
+  }
+
+  .bottom {
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    padding: 9px 10px;
+  }
+
+  .name {
+    font-size: 9px;
+  }
+
+  .arrow {
+    font-size: 11px;
+  }
+}

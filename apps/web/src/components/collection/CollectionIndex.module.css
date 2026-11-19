@@ -1,0 +1,137 @@
+.index {
+  border-bottom: 1px solid var(--color-black);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 40px 240px minmax(0, 1fr) 160px;
+  align-items: center;
+  gap: 32px;
+  padding: 24px 0;
+  border-top: 1px solid var(--color-black);
+}
+
+.number {
+  align-self: start;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  color: var(--color-graphite);
+}
+
+.preview {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 180px;
+  padding: 10px;
+  background: var(--color-steel-gray);
+  overflow: hidden;
+}
+
+.previewImage {
+  object-fit: cover;
+  transition: transform 400ms var(--ease);
+}
+
+.row:hover .previewImage {
+  transform: scale(1.03);
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.title {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.description {
+  max-width: 520px;
+  font-size: 12px;
+  line-height: 1.65;
+  color: var(--color-graphite);
+}
+
+.statement {
+  max-width: 520px;
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.arrow {
+  font-family: var(--font-mono);
+  font-size: 14px;
+}
+
+@media (max-width: 1023px) {
+  .row {
+    grid-template-columns: 28px 180px minmax(0, 1fr);
+    gap: 20px;
+  }
+
+  .meta {
+    display: none;
+  }
+
+  .preview {
+    height: 150px;
+  }
+}
+
+@media (max-width: 767px) {
+  .row {
+    grid-template-columns: 26px minmax(0, 1fr);
+    grid-template-areas:
+      "num meta"
+      "preview preview"
+      "body body";
+    gap: 12px 14px;
+    padding: 20px 0 24px;
+  }
+
+  .number {
+    grid-area: num;
+    align-self: center;
+  }
+
+  .preview {
+    grid-area: preview;
+    height: 190px;
+    margin-top: 2px;
+  }
+
+  .body {
+    grid-area: body;
+    gap: 6px;
+  }
+
+  .meta {
+    grid-area: meta;
+    display: flex;
+  }
+
+  .description,
+  .statement {
+    font-size: 11.5px;
+  }
+}

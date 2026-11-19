@@ -1,0 +1,24 @@
+{
+  "name": "oudyn-watchs",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "concurrently -k -n API,WEB -c black,green \"npm:dev:api\" \"npm:dev:web\"",
+    "dev:api": "npm --workspace @oudyn/api run dev",
+    "dev:web": "npm --workspace @oudyn/web run dev",
+    "build": "npm --workspace @oudyn/web run build",
+    "start": "concurrently -k -n API,WEB -c black,green \"npm:start:api\" \"npm:start:web\"",
+    "start:api": "npm --workspace @oudyn/api run start",
+    "start:web": "npm run preview",
+    "lint": "npm --workspace @oudyn/web run lint",
+    "preview": "node scripts/serve-static.mjs apps/web/out 3000",
+    "deploy": "npx --yes wrangler pages deploy apps/web/out --project-name oudyn-watchs"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "playwright": "^1.56.1"
+  }
+}

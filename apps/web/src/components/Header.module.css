@@ -1,0 +1,254 @@
+.header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 100;
+  color: var(--color-black);
+  transition: color 220ms var(--ease);
+}
+
+.header[data-light-logo] {
+  color: var(--color-white);
+}
+
+.inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 16px 24px 0;
+}
+
+.logo {
+  flex: none;
+  font-family: var(--font-sans);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  color: inherit;
+}
+
+.navPill {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  height: 40px;
+  padding: 0 24px;
+  background: var(--color-white);
+  border-radius: var(--radius-panel);
+  color: var(--color-black);
+}
+
+.navLink {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: opacity 160ms ease;
+}
+
+.navLink:hover {
+  opacity: 0.55;
+}
+
+.actionsPill {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  height: 40px;
+  margin-left: auto;
+  padding: 0 20px;
+  background: var(--color-white);
+  border-radius: var(--radius-panel);
+  color: var(--color-black);
+}
+
+.action {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: opacity 160ms ease;
+}
+
+.action:hover {
+  opacity: 0.55;
+}
+
+.count {
+  font-size: 8px;
+  color: var(--color-graphite);
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-lume-green);
+}
+
+.mobileActions {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.mobilePill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  height: 40px;
+  padding: 0 22px;
+  border-radius: var(--radius-panel);
+  background: var(--color-steel-gray);
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.mobileMenu {
+  z-index: 1;
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 84px 20px 24px;
+  overflow-y: auto;
+  background: var(--color-white);
+}
+
+.mobileNav {
+  display: flex;
+  flex-direction: column;
+}
+
+.mobileLink {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--color-steel-gray);
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+.mobileIndex {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 0.06em;
+  color: var(--color-graphite);
+}
+
+.mobileSub {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-top: 24px;
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.mobileSub a,
+.mobileSub button {
+  border-bottom: 1px solid transparent;
+}
+
+.mobileSub a:hover,
+.mobileSub button:hover {
+  border-color: var(--color-black);
+}
+
+.mobileNote {
+  margin-top: auto;
+  padding-top: 32px;
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-graphite);
+}
+
+@media (max-width: 1279px) {
+  .inner {
+    gap: 16px;
+    padding-inline: 16px;
+  }
+
+  .navPill {
+    gap: 18px;
+    padding: 0 18px;
+  }
+
+  .actionsPill {
+    gap: 16px;
+    padding: 0 16px;
+  }
+
+  .navLink,
+  .action {
+    font-size: 9px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .navPill,
+  .actionsPill {
+    display: none;
+  }
+
+  .mobileActions {
+    display: flex;
+  }
+
+  .logo {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 767px) {
+  .inner {
+    gap: 12px;
+    padding: 12px 12px 0;
+  }
+
+  .logo {
+    font-size: 21px;
+  }
+
+  .mobilePill {
+    height: 38px;
+    padding: 0 18px;
+    font-size: 9px;
+  }
+
+  .mobileMenu {
+    padding: 76px 16px 20px;
+  }
+}
+
+@media (max-width: 370px) {
+  .logo {
+    font-size: 19px;
+  }
+
+  .mobilePill {
+    padding: 0 14px;
+  }
+}

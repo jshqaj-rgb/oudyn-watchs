@@ -1,0 +1,152 @@
+.section {
+  padding: var(--section-pad) 0;
+  background: var(--color-studio-white);
+  border-bottom: 1px solid var(--color-steel-gray);
+}
+
+.head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 32px;
+  margin-bottom: 28px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+
+.note {
+  margin-top: 6px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--color-graphite);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-shrink: 0;
+}
+
+.count {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-graphite);
+}
+
+.buttons {
+  display: flex;
+  gap: 6px;
+}
+
+.buttons button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--color-black);
+  border-radius: var(--radius-panel);
+  color: var(--color-black);
+  transition: background 160ms ease, color 160ms ease;
+}
+
+.buttons button:hover:not(:disabled) {
+  background: var(--color-black);
+  color: var(--color-white);
+}
+
+.buttons button:disabled {
+  border-color: var(--color-steel-gray);
+  color: var(--color-steel-gray);
+  cursor: default;
+}
+
+.rail {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+}
+
+.rail::-webkit-scrollbar {
+  display: none;
+}
+
+.card {
+  flex: 0 0 calc((100% - 32px) / 3);
+  scroll-snap-align: start;
+}
+
+.endCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 0 0 calc((100% - 32px) / 3);
+  aspect-ratio: 4 / 5;
+  padding: 20px;
+  background: var(--color-black);
+  color: var(--color-white);
+  border-radius: var(--radius-panel);
+  scroll-snap-align: start;
+}
+
+.endArrow {
+  font-size: 22px;
+  line-height: 1;
+}
+
+.endLabel {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  max-width: 16ch;
+  line-height: 1.5;
+}
+
+.endCard:hover .endArrow {
+  transform: translateX(4px);
+}
+
+.endArrow {
+  transition: transform 200ms var(--ease);
+}
+
+@media (max-width: 1023px) {
+  .card,
+  .endCard {
+    flex-basis: calc((100% - 16px) / 2);
+  }
+}
+
+@media (max-width: 767px) {
+  .head {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  .actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .card,
+  .endCard {
+    flex-basis: 80%;
+  }
+
+  .endCard {
+    aspect-ratio: 4 / 5;
+  }
+}
