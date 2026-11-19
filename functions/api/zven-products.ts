@@ -1,30 +1,36 @@
-interface Env {
-  API_ORIGIN?: string;
-}
+import { configureCatalog, getInventory } from "../../packages/catalog/index.ts";
 
-export const onRequest: PagesFunction<Env> = async ({ request, env }) => {
-  const origin = env.API_ORIGIN;
-  if (!origin) {
-    return new Response(JSON.stringify({ error: "API_ORIGIN is not configured." }), {
-      status: 503,
-      headers: { "content-type": "application/json" },
-    });
-  }
+type Env = {
+  EMDASH_READ_TOKEN?: string;
+  EMDASH_MERCHANT_ID?: string;
+  EMDASH_API_URL?: string;
+  EMDASH_ASSET_BASE?: string;
+  EMDASH_USE_SOURCE_IMAGES?: string;
+};
 
-  const target = new URL("/api/zven-products", origin);
-  const headers = new Headers(request.headers);
-  headers.delete("host");
+export const onRequest: PagesFunction<Env> = async ({ env }) => {
+  configureCatalog({
+    token: env.EMDASH_READ_TOKEN,
+    merchantId: env.EMDASH_MERCHANT_ID,
+    apiUrl: env.EMDASH_API_URL,
+    assetBase: env.EMDASH_ASSET_BASE,
+    useSourceImages: env.EMDASH_USE_SOURCE_IMAGES === "1",
+  });
 
   try {
-    const response = await fetch(target, {
-      method: request.method,
-      headers,
-      body: request.method === "GET" || request.method === "HEAD" ? undefined : request.body,
-    });
-    return new Response(response.body, {
-      status: response.status,
-      headers: response.headers,
-    });
+    const products = await getInventory();
+    return new Response(
+      JSON.stringify(
+        products.map((product) => ({
+          id: product.id,
+          name: product.name,
+          price: product.price,
+          stock: product.stock,
+          image: product.sourceImage ?? product.images[0] ?? "",
+        })),
+      ),
+      { headers: { "content-type": "application/json; charset=utf-8", "cache-control": "no-store" } },
+    );
   } catch {
     return new Response(JSON.stringify({ error: "Catalog service unavailable." }), {
       status: 502,

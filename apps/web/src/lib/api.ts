@@ -1,3 +1,14 @@
+import {
+  collectionsWithCount,
+  configureCatalog,
+  facetsFor,
+  findProduct,
+  getInventory,
+  getPublishedProducts,
+  listProducts,
+  collectionCatalog,
+  storyCatalog,
+} from "@oudyn/catalog";
 import type {
   ArchiveItem,
   CollectionWithCount,
@@ -6,20 +17,13 @@ import type {
   Story,
 } from "@oudyn/contracts";
 
-const API_URL = process.env.API_URL ?? "http://127.0.0.1:4000";
-const BUILD_TIME = process.env.STATIC_EXPORT === "1";
-const BUILD_TAG = BUILD_TIME ? `build-${Date.now()}` : "";
-
-async function getJson<T>(path: string): Promise<T> {
-  const url = `${API_URL}${path}${BUILD_TAG ? `${path.includes("?") ? "&" : "?"}__build=${BUILD_TAG}` : ""}`;
-  const response = await fetch(url, {
-    cache: BUILD_TIME ? "force-cache" : "no-store",
-  });
-  if (!response.ok) {
-    throw new Error(`Catalog request failed: ${response.status} ${path}`);
-  }
-  return (await response.json()) as T;
-}
+configureCatalog({
+  token: process.env.EMDASH_READ_TOKEN,
+  merchantId: process.env.EMDASH_MERCHANT_ID,
+  apiUrl: process.env.EMDASH_API_URL,
+  assetBase: process.env.EMDASH_ASSET_BASE,
+  useSourceImages: process.env.EMDASH_USE_SOURCE_IMAGES === "1",
+});
 
 export type ProductQuery = {
   collection?: string;
@@ -44,38 +48,56 @@ export function productQueryString(query: ProductQuery): string {
   return value ? `?${value}` : "";
 }
 
-export function getProducts(query: ProductQuery = {}): Promise<ProductListResponse> {
-  return getJson<ProductListResponse>(`/api/products${productQueryString(query)}`);
+export async function getProducts(query: ProductQuery = {}): Promise<ProductListResponse> {
+  const products = await getPublishedProducts();
+  const url = new URL(`https://oudyn.local/api/products${productQueryString(query)}`);
+  const page = listProducts(products, url);
+  return { ...page, facets: facetsFor(products) };
 }
 
-export function getProduct(slug: string): Promise<Product> {
-  return getJson<Product>(`/api/products/${encodeURIComponent(slug)}`);
+export async function getProduct(slug: string): Promise<Product> {
+  const product = await findProduct(slug);
+  if (!product) throw new Error(`Product not found: ${slug}`);
+  return product;
 }
 
-export function getCollections(): Promise<CollectionWithCount[]> {
-  return getJson<CollectionWithCount[]>("/api/collections");
+export async function getCollections(): Promise<CollectionWithCount[]> {
+  return collectionsWithCount(await getInventory()) as CollectionWithCount[];
 }
 
-export function getCollection(handle: string): Promise<
-  CollectionWithCount & { items: Product[] }
-> {
-  return getJson<CollectionWithCount & { items: Product[] }>(
-    `/api/collections/${encodeURIComponent(handle)}`,
-  );
+export async function getCollection(
+  handle: string,
+): Promise<CollectionWithCount & { items: Product[] }> {
+  const products = await getInventory();
+  const collection = collectionsWithCount(products).find((item) => item.handle === handle);
+  if (!collection) throw new Error(`Collection not found: ${handle}`);
+  return {
+    ...collection,
+    items: products.filter((product) => product.collection === handle && !product.soldOut),
+  } as CollectionWithCount & { items: Product[] };
 }
 
-export function getArchive(): Promise<ArchiveItem[]> {
-  return getJson<ArchiveItem[]>("/api/archive");
+export async function getArchive(): Promise<ArchiveItem[]> {
+  return (await getInventory())
+    .filter((product) => product.soldOut)
+    .map((product) => ({
+      ...product,
+      archiveLabel: "SOLD OUT" as const,
+      archiveYear: product.year ? String(product.year) : "ARCHIVE",
+    }));
 }
 
-export function getStories(): Promise<Story[]> {
-  return getJson<Story[]>("/api/stories");
+export async function getStories(): Promise<Story[]> {
+  return storyCatalog as Story[];
 }
 
-export function getStory(slug: string): Promise<Story> {
-  return getJson<Story>(`/api/stories/${encodeURIComponent(slug)}`);
+export async function getStory(slug: string): Promise<Story> {
+  const story = storyCatalog.find((item) => item.slug === slug);
+  if (!story) throw new Error(`Story not found: ${slug}`);
+  return story as Story;
 }
 
+export { collectionCatalog, getInventory };
 export function formatPrice(price: number): string {
   return `¥ ${price.toLocaleString("zh-CN")}`;
 }

@@ -1,7 +1,7 @@
 import path from "node:path";
 import type { NextConfig } from "next";
 
-const apiUrl = process.env.API_URL ?? "http://127.0.0.1:4000";
+const devApiOrigin = process.env.DEV_API_ORIGIN ?? "http://127.0.0.1:4000";
 const isStaticExport = process.env.STATIC_EXPORT === "1";
 
 const nextConfig: NextConfig = {
@@ -9,7 +9,7 @@ const nextConfig: NextConfig = {
   trailingSlash: isStaticExport,
   outputFileTracingRoot: path.resolve(process.cwd(), "../.."),
   poweredByHeader: false,
-  transpilePackages: ["@oudyn/contracts"],
+  transpilePackages: ["@oudyn/contracts", "@oudyn/catalog"],
   images: {
     unoptimized: true,
     remotePatterns: [
@@ -24,7 +24,7 @@ const nextConfig: NextConfig = {
           return [
             {
               source: "/api/catalog/:path*",
-              destination: `${apiUrl}/api/:path*`,
+              destination: `${devApiOrigin}/api/:path*`,
             },
           ];
         },

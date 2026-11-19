@@ -1,0 +1,42 @@
+[
+  {
+    "handle": "classic",
+    "title": "Classic",
+    "description": "Time-only instruments with a calm, legible architecture. Designed to be worn every day for a very long time.",
+    "statement": "The permanent collection",
+    "previewSlug": "due-36",
+    "previewView": "dial"
+  },
+  {
+    "handle": "toolwatches",
+    "title": "Toolwatches",
+    "description": "Sealed cases, high-contrast dials and bezels you can actually use. Built for weather, water and unplanned days.",
+    "statement": "Purpose-built instruments",
+    "previewSlug": "nove-diver",
+    "previewView": "front"
+  },
+  {
+    "handle": "collaborations",
+    "title": "Collaborations",
+    "description": "Short-run studies made with studios, publications and people whose work we follow.",
+    "statement": "Outside voices, inside the case",
+    "previewSlug": "sette-chrono",
+    "previewView": "front"
+  },
+  {
+    "handle": "limited-edition",
+    "title": "Limited Edition",
+    "description": "Numbered pieces with a fixed production run. Once the edition is closed, it does not return.",
+    "statement": "A fixed number, then nothing",
+    "previewSlug": "quattro-black",
+    "previewView": "front"
+  },
+  {
+    "handle": "accessories",
+    "title": "Accessories",
+    "description": "Straps, cases and the small objects that keep a watch in use.",
+    "statement": "Parts and pieces",
+    "previewSlug": "suede-strap-20",
+    "previewView": "strap"
+  }
+]
