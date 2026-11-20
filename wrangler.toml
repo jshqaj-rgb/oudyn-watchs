@@ -3,7 +3,9 @@ pages_build_output_dir = "apps/web/out"
 compatibility_date = "2025-11-19"
 
 # Runtime variables for Pages Functions:
-#   EMDASH_READ_TOKEN  (secret, also needed by the build)
+#   SHOP_EDGE_SITE_KEY (secret, build + runtime, 推荐)
+#   SHOP_EDGE_SITE_ORIGIN (optional, default https://oudyn.com)
+#   EMDASH_READ_TOKEN  (secret, fallback when SHOP_EDGE_SITE_KEY is absent)
 #   EMDASH_MERCHANT_ID
 #   EMDASH_API_URL / EMDASH_ASSET_BASE (optional)
 #

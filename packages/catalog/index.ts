@@ -6,6 +6,8 @@ import type {
 } from "../contracts/index.ts";
 
 const DEFAULT_API = "https://emd.aaaaaaaa.bid/_emdash/api/content/products";
+const DEFAULT_GATEWAY = "https://shop-edge.jshqaj.workers.dev/v1/products";
+const DEFAULT_SITE_ORIGIN = "https://oudyn.com";
 const DEFAULT_ASSET_BASE = "https://emd.aaaaaaaa.bid";
 const COLLECTION_HANDLES: CollectionHandle[] = [
   "classic",
@@ -22,6 +24,10 @@ type EmdashEntry = {
 
 export type CatalogConfig = {
   token?: string;
+  /** 网关站点 key（sk_live_...）；配置后走独立网关，不再直连 EmDash */
+  siteKey?: string;
+  /** 服务端调用时代替 Origin 头 */
+  siteOrigin?: string;
   merchantId?: string;
   apiUrl?: string;
   assetBase?: string;
@@ -32,6 +38,8 @@ const nodeEnv: Record<string, string | undefined> =
   typeof process !== "undefined" ? process.env : {};
 let config: CatalogConfig = {
   token: nodeEnv.EMDASH_READ_TOKEN,
+  siteKey: nodeEnv.SHOP_EDGE_SITE_KEY,
+  siteOrigin: nodeEnv.SHOP_EDGE_SITE_ORIGIN,
   merchantId: nodeEnv.EMDASH_MERCHANT_ID,
   apiUrl: nodeEnv.EMDASH_API_URL,
   assetBase: nodeEnv.EMDASH_ASSET_BASE,
@@ -292,7 +300,76 @@ function toProduct(entry: EmdashEntry): Product | null {
   };
 }
 
+type GatewayProduct = {
+  id?: unknown;
+  slug?: unknown;
+  sku?: unknown;
+  name?: unknown;
+  category?: unknown;
+  price?: unknown;
+  stock?: unknown;
+  description?: unknown;
+  specs?: unknown;
+  images?: unknown;
+  coverImage?: unknown;
+  merchantId?: unknown;
+};
+
+/** 网关精简商品 → catalog 原有的 EmdashEntry 形状，复用既有映射逻辑 */
+function fromGateway(item: GatewayProduct): EmdashEntry {
+  const specs =
+    item.specs && typeof item.specs === "object" && !Array.isArray(item.specs)
+      ? (item.specs as Record<string, unknown>)
+      : {};
+  return {
+    id: text(item.id),
+    data: {
+      ...specs,
+      name: item.name,
+      slug: item.slug,
+      sku: item.sku,
+      category: item.category,
+      price: item.price,
+      stock: item.stock,
+      description: item.description,
+      specs,
+      images: Array.isArray(item.images) ? item.images : [],
+      cover_image: item.coverImage,
+      merchant_id: item.merchantId,
+    },
+  };
+}
+
+async function fetchFromGateway(page: number): Promise<EmdashEntry[]> {
+  const url = new URL(config.apiUrl ?? DEFAULT_GATEWAY);
+  url.searchParams.set("limit", "100");
+  url.searchParams.set("page", String(page));
+  const staticBuild = typeof process !== "undefined" && process.env.STATIC_EXPORT === "1";
+  if (staticBuild) url.searchParams.set("__build", process.env.BUILD_ID ?? "static");
+
+  const response = await fetch(url, {
+    headers: {
+      "X-Site-Key": config.siteKey as string,
+      "X-Site-Origin": config.siteOrigin ?? DEFAULT_SITE_ORIGIN,
+      Accept: "application/json",
+    },
+    cache: staticBuild ? "force-cache" : "no-store",
+  });
+
+  if (!response.ok) {
+    throw new Error(`Shop edge returned ${response.status} for products page ${page}.`);
+  }
+
+  const payload = (await response.json()) as {
+    data?: { items?: GatewayProduct[] };
+  };
+  const items = Array.isArray(payload.data?.items) ? payload.data?.items : [];
+  return items.map(fromGateway);
+}
+
 async function fetchPage(page: number): Promise<EmdashEntry[]> {
+  if (config.siteKey) return fetchFromGateway(page);
+
   const token = config.token;
   if (!token) {
     throw new Error("EMDASH_READ_TOKEN is not configured on the API server.");

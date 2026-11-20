@@ -15,12 +15,12 @@ The storefront is a Next.js static export deployed on Cloudflare Pages. Products
 ## Architecture
 
 ```text
-Build:    Next static export → packages/catalog → EmDash
-Runtime:  browser → /api/catalog/* → Pages Function → EmDash
+Build:    Next static export → packages/catalog → shop-edge 网关 → EmDash
+Runtime:  browser → /api/catalog/* → Pages Function → shop-edge 网关 → EmDash
 Writes:   orders / newsletter / contact → Pages Function → OUDYN_KV
 ```
 
-The build needs `EMDASH_READ_TOKEN` because every product, collection, story and sitemap entry is prerendered. The browser never sees the token.
+The build needs `SHOP_EDGE_SITE_KEY`（推荐）或 `EMDASH_READ_TOKEN`，因为 every product, collection, story and sitemap entry is prerendered. 配了 `SHOP_EDGE_SITE_KEY` 时走 `shop-edge` 网关，浏览器永远看不到 key；未配时回退直连 EmDash。
 
 ## Local development
 
@@ -64,7 +64,9 @@ Set these in **Pages → Settings → Environment variables → Production** (an
 
 | Variable | Build | Runtime | Purpose |
 | --- | --- | --- | --- |
-| `EMDASH_READ_TOKEN` | yes | yes | EmDash bearer token; secret |
+| `SHOP_EDGE_SITE_KEY` | yes | yes | 网关站点 key（`sk_live_...`），推荐 |
+| `SHOP_EDGE_SITE_ORIGIN` | optional | optional | 服务端调用时透传的 Origin，默认 `https://oudyn.com` |
+| `EMDASH_READ_TOKEN` | fallback | fallback | 未配网关 key 时直连 EmDash |
 | `EMDASH_MERCHANT_ID` | yes | yes | Defaults to `mch_oudyn` |
 | `EMDASH_API_URL` | optional | optional | Products endpoint override |
 | `EMDASH_ASSET_BASE` | optional | optional | Prefix for relative image URLs |
