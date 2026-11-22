@@ -169,3 +169,54 @@
     font-size: 14px;
   }
 }
+
+.updated {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 56px;
+  padding-top: 14px;
+  border-top: 1px solid var(--color-steel-gray);
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--color-graphite);
+}
+
+.dark {
+  background: #0b0b0a;
+  color: var(--color-white);
+}
+
+.dark .head {
+  border-bottom-color: rgba(255, 255, 255, .5);
+}
+
+.dark .eyebrow,
+.dark .asideLabel,
+.dark .updated {
+  color: #a9a9a4;
+}
+
+.dark .intro,
+.dark .section p,
+.dark .section li,
+.dark .asideFoot {
+  color: #c9c9c3;
+}
+
+.dark .asideNav,
+.dark .asideNav a,
+.dark .section + .section {
+  border-color: #2e2e2b;
+}
+
+.dark .asideFoot a {
+  border-bottom-color: var(--color-white);
+  color: var(--color-white);
+}
+
+.dark .updated {
+  border-top-color: #2e2e2b;
+}

@@ -19,3 +19,5 @@ assets-check
 # local tool state
 .wrangler
 .qa
+
+*.tsbuildinfo

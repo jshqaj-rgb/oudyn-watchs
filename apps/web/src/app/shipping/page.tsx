@@ -22,7 +22,7 @@ export default function ShippingPage() {
         {
           title: "Import taxes and duties",
           body: [
-            "Import taxes and duties depend on the destination and are not included in the CNY price shown on the listing. We tell you what we know before payment; any charge collected by customs is the buyer's responsibility unless we state otherwise in writing.",
+            "Import taxes and duties depend on the destination and are not included in the USD price shown on the listing. We tell you what we know before payment; any charge collected by customs is the buyer's responsibility unless we state otherwise in writing.",
           ],
         },
         {
@@ -34,8 +34,8 @@ export default function ShippingPage() {
         {
           title: "Returns",
           body: [
-            "Any return right is confirmed in writing before payment and is subject to the condition stated in that confirmation. Statutory rights are unaffected.",
-            "Do not send a watch back without written instructions. We will confirm the return address, carrier and insurance requirements first.",
+            "You may return a watch within 14 days of delivery and receive a full refund of the purchase price. You do not need to give a reason.",
+            "Contact studio@oudyn.com within the 14-day period before sending anything back. We will confirm the return address, carrier, insurance and the condition the watch must be in. Statutory rights are unaffected.",
           ],
         },
         {

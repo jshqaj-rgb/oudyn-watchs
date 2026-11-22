@@ -344,8 +344,8 @@ export function CatalogBrowser({
             <p>Condition, set contents and known faults are written down before sale.</p>
           </div>
           <div>
-            <h2>14-day return right</h2>
-            <p>Where applicable. Read the Shipping &amp; Returns page for conditions.</p>
+            <h2>14-day money-back guarantee</h2>
+            <p>Full refund of the purchase price within 14 days of delivery.</p>
           </div>
           <div>
             <h2>Worldwide shipping</h2>

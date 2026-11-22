@@ -58,3 +58,21 @@
     padding: 0 0 18px 40px;
   }
 }
+
+
+:global(main[data-theme="dark"]) .list {
+  border-top-color: rgba(255, 255, 255, 0.5);
+}
+
+:global(main[data-theme="dark"]) .item {
+  border-bottom-color: #2e2e2b;
+}
+
+:global(main[data-theme="dark"]) .number,
+:global(main[data-theme="dark"]) .item p {
+  color: #a9a9a4;
+}
+
+:global(main[data-theme="dark"]) .item[open] .mark {
+  color: var(--color-white);
+}

@@ -28,7 +28,10 @@ export function Header() {
     pathname === "/watches" ||
     pathname === "/about" ||
     pathname === "/contact" ||
-    pathname === "/sell";
+    pathname === "/sell" ||
+    pathname === "/faq" ||
+    pathname === "/reviews" ||
+    pathname === "/how-to";
 
   useEffect(() => {
     setMenuOpen(false);
@@ -66,7 +69,11 @@ export function Header() {
   const lightLogo = darkHero && atTop && !menuOpen;
 
   return (
-    <header className={styles.header} data-light-logo={lightLogo || undefined}>
+    <header
+      className={styles.header}
+      data-light-logo={lightLogo || undefined}
+      data-scrolled={!atTop && !menuOpen ? "true" : undefined}
+    >
       <div className={styles.inner}>
         <Link href="/" className={styles.logo} aria-label="OUDYN home">
           OUDYN

@@ -15,7 +15,7 @@ const DISCLOSURES = [
   {
     id: "shipping",
     title: "Inspection & condition",
-    body: "We examine the case, dial, movement, bracelet or strap and the accompanying paperwork before a watch is listed. The condition report records what we observed. We do not claim factory authentication or a service history we cannot document.",
+    body: "We examine the case, dial, movement, bracelet or strap and the accompanying paperwork before a watch is listed. Every watch is inspected for authenticity before listing, and the condition report records what we observed. If something cannot be documented, it is not presented as documented.",
   },
   {
     id: "care",

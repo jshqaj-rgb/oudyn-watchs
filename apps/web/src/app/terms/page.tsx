@@ -30,7 +30,7 @@ export default function TermsPage() {
         {
           title: "Prices, currency and taxes",
           body: [
-            "Prices are shown in CNY. Shipping, insurance and import taxes are confirmed before payment. We do not describe a total as including duties or VAT unless that is stated in the written confirmation for that sale.",
+            "Prices are shown in USD. Shipping, insurance and import taxes are confirmed before payment. We do not describe a total as including duties or VAT unless that is stated in the written confirmation for that sale.",
           ],
         },
         {
@@ -43,13 +43,13 @@ export default function TermsPage() {
         {
           title: "Inspection and paperwork",
           body: [
-            "Our condition report records what we examined. It is not a manufacturer's certificate and is not a guarantee of authenticity by the manufacturer. Anything we could not verify is described as unverified.",
+            "Every watch we sell is guaranteed authentic. Our condition report records what we examined; it is an inspection record, not a manufacturer's certificate. Anything we could not verify is described as unverified.",
           ],
         },
         {
           title: "Payment, returns and warranty",
           body: [
-            "Payment is arranged separately after written confirmation. Any return right, warranty or after-sales term applies only if it is stated in that written confirmation. Statutory rights that cannot be excluded are unaffected.",
+            "Payment is arranged separately after written confirmation. You may return a watch within 14 days of delivery for a full refund of the purchase price; contact us before returning it. Any warranty applies only if it is stated in the written confirmation for that specific watch. Statutory rights that cannot be excluded are unaffected.",
           ],
         },
         {

@@ -10,9 +10,8 @@ import type {
   OrderLineInput,
   OrderRequest,
   Product,
-  Story,
 } from "../../../packages/contracts/index.ts";
-import { findProduct, getInventory, getPublishedProducts } from "./emdash";
+import { findProduct, getInventory, getPublishedProducts } from "@oudyn/catalog";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const dataDir = join(here, "..", "data");
@@ -23,10 +22,7 @@ async function readJson<T>(file: string): Promise<T> {
   return JSON.parse(await readFile(join(dataDir, file), "utf8")) as T;
 }
 
-const [collections, stories] = await Promise.all([
-  readJson<Collection[]>("collections.json"),
-  readJson<Story[]>("stories.json"),
-]);
+const collections = await readJson<Collection[]>("collections.json");
 
 const app = express();
 app.disable("x-powered-by");
@@ -128,7 +124,6 @@ app.get("/api/health", async (_req: Request, res: Response) => {
       status: "ok",
       products: published.length,
       archive: inventory.filter((product) => product.soldOut).length,
-      stories: stories.length,
       source: "emdash",
     });
   } catch (error) {
@@ -150,21 +145,6 @@ app.get("/api/zven-products", async (_req: Request, res: Response) => {
   } catch (error) {
     unavailable(res, error);
   }
-});
-
-app.get("/api/stories", (_req: Request, res: Response) => {
-  res.set("Cache-Control", "no-store");
-  res.json(stories);
-});
-
-app.get("/api/stories/:slug", (req: Request, res: Response) => {
-  const story = stories.find((item) => item.slug === req.params.slug);
-  if (!story) {
-    res.status(404).json({ error: "Story not found" });
-    return;
-  }
-  res.set("Cache-Control", "no-store");
-  res.json(story);
 });
 
 app.post("/api/contact", async (req: Request, res: Response) => {
@@ -351,7 +331,7 @@ app.post("/api/orders", async (req: Request, res: Response) => {
       customer: { email, name, address, city, postalCode, country },
       lines,
       total,
-      currency: "CNY",
+      currency: "USD",
     });
     await writeFile(file, `${JSON.stringify(orders, null, 2)}\n`);
     res.status(201).json({ ok: true, orderId, total, email });

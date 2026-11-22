@@ -4,6 +4,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { StoreProvider } from "@/components/store/StoreProvider";
 import { CartDrawer } from "@/components/store/CartDrawer";
+import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.oudyn.com"),
@@ -22,12 +23,46 @@ export const metadata: Metadata = {
   icons: {
     icon: "/icon.svg",
   },
+  alternates: {
+    types: {
+      "text/plain": "/llms.txt",
+    },
+  },
 };
+
+const siteSchema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: SITE.brand,
+    url: "https://www.oudyn.com/",
+    email: SITE.email,
+    description:
+      "Independent reseller of pre-owned luxury watches in Hong Kong and Guangzhou. Every watch is inspected for authenticity before listing.",
+    areaServed: ["Hong Kong", "Guangzhou"],
+    knowsAbout: ["Pre-owned luxury watches", "Watch authentication", "Rolex references"],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: SITE.brand,
+    url: "https://www.oudyn.com/",
+    potentialAction: {
+      "@type": "SearchAction",
+      target: "https://www.oudyn.com/watches?q={search_term_string}",
+      "query-input": "required name=search_term_string",
+    },
+  },
+];
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(siteSchema) }}
+        />
         {/*
           OUDYN WATCHS — DIRECTION CONTRACT
           THESIS: A pre-owned watch is bought on evidence, not atmosphere. Photography carries the object; the interface carries the proof.
@@ -42,7 +77,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             Skip to content
           </a>
           <Header />
-          <div id="main">{children}</div>
+          <div>{children}</div>
           <Footer />
           <CartDrawer />
         </StoreProvider>

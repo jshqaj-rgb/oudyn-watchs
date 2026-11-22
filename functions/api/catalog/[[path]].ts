@@ -5,7 +5,6 @@ import {
   findProduct,
   getInventory,
   listProducts,
-  storyCatalog,
 } from "../../../packages/catalog/index.ts";
 import type { Product } from "../../../packages/contracts/index.ts";
 
@@ -71,7 +70,6 @@ export async function onRequest(context: Context): Promise<Response> {
         status: "ok",
         products: products.filter((product) => !product.soldOut).length,
         archive: products.filter((product) => product.soldOut).length,
-        stories: storyCatalog.length,
         source: "emdash-functions",
       });
     }
@@ -112,33 +110,6 @@ export async function onRequest(context: Context): Promise<Response> {
             archiveYear: product.year ? String(product.year) : "ARCHIVE",
           })),
       );
-    }
-
-    if (context.request.method === "GET" && route === "stories") {
-      return json(storyCatalog);
-    }
-
-    if (context.request.method === "GET" && route.startsWith("stories/")) {
-      const slug = decodeURIComponent(route.slice("stories/".length));
-      const story = storyCatalog.find((item) => item.slug === slug);
-      return story ? json(story) : json({ error: "Story not found." }, 404);
-    }
-
-    if (context.request.method === "POST" && route === "orders") {
-      return json({ error: "Online checkout is disabled. Send an availability enquiry instead." }, 410);
-    }
-
-    if (context.request.method === "POST" && route === "newsletter") {
-      const body = (await context.request.json()) as { email?: string };
-      if (!body?.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(body.email)) {
-        return json({ error: "A valid email is required." }, 400);
-      }
-      const stored = await append(context.env, "newsletter", {
-        email: body.email.toLowerCase(),
-        createdAt: new Date().toISOString(),
-      });
-      if (!stored) return json({ error: "Newsletter storage is not configured." }, 503);
-      return json({ ok: true }, 201);
     }
 
     if (context.request.method === "POST" && route === "contact") {

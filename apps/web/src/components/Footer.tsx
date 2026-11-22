@@ -19,6 +19,8 @@ const COLUMNS = [
       { label: "Sell or trade", href: "/sell" },
       { label: "Shipping & returns", href: "/shipping" },
       { label: "FAQ", href: "/faq" },
+      { label: "Reviews", href: "/reviews" },
+      { label: "How to buy", href: "/how-to" },
     ],
   },
   {

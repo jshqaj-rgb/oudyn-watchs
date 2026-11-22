@@ -19,7 +19,7 @@ const CARDS = [
   },
   {
     title: "Terms before payment",
-    text: "The final CNY total, shipping, import taxes, return terms and any warranty are confirmed in writing before you pay.",
+    text: "The final USD total, shipping, import taxes, return terms and any warranty are confirmed in writing before you pay.",
     Visual: CertificateVisual,
   },
 ];

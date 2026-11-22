@@ -88,5 +88,5 @@ export async function getArchive(): Promise<ArchiveItem[]> {
 
 export { collectionCatalog, getInventory };
 export function formatPrice(price: number): string {
-  return `CNY ${price.toLocaleString("en-US")}`;
+  return `USD ${price.toLocaleString("en-US")}`;
 }

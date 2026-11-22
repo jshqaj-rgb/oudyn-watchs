@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getCollections, getProducts } from "@/lib/api";
+import { SITE } from "@/lib/site";
 
 export const dynamic = "force-static";
 
@@ -20,12 +21,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/authentication",
     "/shipping",
     "/faq",
+    "/reviews",
+    "/how-to",
     "/privacy",
     "/terms",
     "/archive",
   ].map((path) => ({
     url: `${base}${path}/`,
-    lastModified: new Date(),
+    lastModified: new Date(`${SITE.lastUpdated}T00:00:00Z`),
     changeFrequency: "weekly" as const,
     priority: path === "" ? 1 : 0.7,
   }));
@@ -40,6 +43,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })),
     ...collections.map((collection) => ({
       url: `${base}/collections/${collection.handle}/`,
+      lastModified: new Date(`${SITE.lastUpdated}T00:00:00Z`),
       changeFrequency: "weekly" as const,
       priority: 0.6,
     })),

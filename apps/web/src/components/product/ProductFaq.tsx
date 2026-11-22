@@ -28,7 +28,7 @@ const QUESTIONS = [
   {
     question: "Can I return the watch?",
     answer:
-      "Any return right is confirmed in writing before payment, together with the condition the watch must be returned in. Statutory rights are unaffected. Do not send a watch back without written instructions.",
+      "You may return the watch within 14 days of delivery for a full refund of the purchase price, without giving a reason. Contact studio@oudyn.com before sending it back so we can confirm the return address and insurance. Statutory rights are unaffected.",
   },
   {
     question: "How is the watch shipped?",

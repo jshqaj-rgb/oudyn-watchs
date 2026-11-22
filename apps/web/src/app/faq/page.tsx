@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ContentPage } from "@/components/static/ContentPage";
+import { SITE } from "@/lib/site";
 import styles from "./faq.module.css";
 
 export const metadata: Metadata = {
@@ -15,7 +16,7 @@ const FAQS = [
   },
   {
     q: "How do you authenticate a watch?",
-    a: "The watch is examined and described. The report records what was seen on the case, movement, dial, hands, crystal and numbers, and lists what we could not verify. It is not a manufacturer's authentication certificate.",
+    a: "Every watch is guaranteed authentic and is inspected before listing. The report records what was seen on the case, movement, dial, hands, crystal and numbers. It is an inspection record, not a manufacturer's certificate.",
   },
   {
     q: "What does the condition grade mean?",
@@ -31,14 +32,14 @@ const FAQS = [
   },
   {
     q: "Can I return a watch?",
-    a: "Any return right is confirmed in writing before payment. Statutory rights are unaffected. Write to studio@oudyn.com if you want the return terms for a specific reference.",
+    a: "You may return a watch within 14 days of delivery for a full refund of the purchase price, without giving a reason. Contact studio@oudyn.com before sending it back. Statutory rights are unaffected.",
   },
   {
     q: "What does the warranty cover?",
     a: "There is no blanket warranty on this website. Any warranty applies only if it is written into the documents for that specific watch.",
   },
   {
-    q: "Do you ship outside the EU?",
+    q: "Do you ship internationally?",
     a: "We ship internationally from Hong Kong. Cost, insurance, lead time and import taxes are confirmed before payment. We do not describe a delivery date until the carrier booking is confirmed.",
   },
   {
@@ -51,6 +52,20 @@ const FAQS = [
   },
 ];
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  dateModified: SITE.lastUpdated,
+  mainEntity: FAQS.map((item) => ({
+    "@type": "Question",
+    name: item.q,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.a,
+    },
+  })),
+};
+
 export default function FaqPage() {
   return (
     <ContentPage
@@ -58,6 +73,9 @@ export default function FaqPage() {
       title="Questions we are asked before a first purchase."
       intro="If your question is not here, write to the studio."
       sections={[]}
+      dark
+      lastUpdated={SITE.lastUpdated}
+      schema={faqSchema}
     >
       <div className={styles.list}>
         {FAQS.map((item, index) => (

@@ -6,6 +6,7 @@ import { ProductCard } from "@/components/product/ProductCard";
 import { ProductGallery } from "@/components/product/ProductGallery";
 import { ProductPurchase } from "@/components/product/ProductPurchase";
 import { ProductSpecs } from "@/components/product/ProductSpecs";
+import { ProductAssurance } from "@/components/product/ProductAssurance";
 import { ProductFaq } from "@/components/product/ProductFaq";
 import { getProduct, getProducts } from "@/lib/api";
 import styles from "./page.module.css";
@@ -56,8 +57,40 @@ export default async function ProductPage({ params }: { params: Params }) {
     )
     .slice(0, 4);
 
+  const base = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.oudyn.com").replace(/\/$/, "");
+  const productUrl = `${base}/watches/${product.slug}/`;
+  const productSchema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: product.name,
+    description: product.shortDescription || product.description[0] || undefined,
+    sku: product.id,
+    image: product.images.map((src) => (/^https?:/i.test(src) ? src : `${base}${src}`)),
+    itemCondition: "https://schema.org/UsedCondition",
+    brand: /劳力士|rolex/i.test(product.name) ? { "@type": "Brand", name: "Rolex" } : undefined,
+    offers: {
+      "@type": "Offer",
+      url: productUrl,
+      priceCurrency: "USD",
+      price: product.price,
+      itemCondition: "https://schema.org/UsedCondition",
+      availability:
+        product.stock > 0 ? "https://schema.org/InStock" : "https://schema.org/SoldOut",
+      seller: { "@type": "Organization", name: "OUDYN WATCHS", url: `${base}/` },
+    },
+    additionalProperty: [
+      { "@type": "PropertyValue", name: "Year", value: product.year },
+      { "@type": "PropertyValue", name: "Condition", value: product.condition },
+      { "@type": "PropertyValue", name: "Set", value: product.setLabel },
+    ],
+  };
+
   return (
     <main id="main" className={styles.page}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+      />
       <div className={styles.shell}>
         <ProductGallery product={product} />
         <ProductPurchase product={product} />
@@ -69,6 +102,8 @@ export default async function ProductPage({ params }: { params: Params }) {
           ))}
         </div>
       </div>
+
+      <ProductAssurance />
 
       <ProductSpecs product={product} />
 

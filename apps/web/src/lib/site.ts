@@ -1,6 +1,7 @@
 export const SITE = {
   brand: "OUDYN WATCHS",
   email: "studio@oudyn.com",
+  lastUpdated: "2026-11-23",
   locations: "Hong Kong & Guangzhou",
   shippingFrom: "Hong Kong",
   hours: "By appointment · HKT / CST",

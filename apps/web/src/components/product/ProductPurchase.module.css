@@ -1,6 +1,6 @@
 .purchase {
-  position: sticky;
-  top: 0;
+  position: relative;
+  top: auto;
   align-self: start;
   display: flex;
   flex-direction: column;

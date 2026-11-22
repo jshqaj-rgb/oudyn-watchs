@@ -12,6 +12,18 @@
   color: var(--color-white);
 }
 
+.header[data-scrolled]::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 72px;
+  background: rgba(246, 246, 246, 0.92);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  backdrop-filter: blur(10px);
+}
+
 .inner {
   position: relative;
   z-index: 2;

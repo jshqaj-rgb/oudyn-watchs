@@ -116,21 +116,6 @@ export type ApiError = {
   error: string;
 };
 
-export type Story = {
-  slug: string;
-  title: string;
-  customer: string;
-  location: string;
-  watchName: string;
-  watchSlug: string;
-  quote: string;
-  excerpt: string;
-  body: string[];
-  images: { src: string; alt: string }[];
-  purchasedAt: string;
-  verified: boolean;
-};
-
 export type ContactRequest = {
   name: string;
   email: string;

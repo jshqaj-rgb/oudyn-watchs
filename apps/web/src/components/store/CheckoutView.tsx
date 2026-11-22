@@ -26,7 +26,7 @@ export function CheckoutView() {
           <p className={styles.paymentNote}>
             This site is a catalogue and enquiry service. No payment is taken online, no order is
             created, and no stock is reserved. Send us the reference you are interested in and we
-            will confirm availability, condition, the final CNY total, shipping and any import
+            will confirm availability, condition, the final USD total, shipping and any import
             taxes in writing before any payment is arranged.
           </p>
           <div className={styles.fields}>
@@ -86,7 +86,7 @@ export function CheckoutView() {
           </div>
         </dl>
         <p className={styles.summaryNote}>
-          Prices are shown in CNY. Shipping, insurance and import taxes are confirmed before
+          Prices are shown in USD. Shipping, insurance and import taxes are confirmed before
           payment.
         </p>
         <Link href="/watches" className={styles.continue}>

@@ -7,6 +7,7 @@ import type { Product, ProductAddOn } from "@oudyn/contracts";
 import { formatPrice } from "@/lib/api";
 import { useStore } from "@/components/store/StoreProvider";
 import { CartIcon, ChevronDownIcon, HeartIcon } from "@/components/visual/Icons";
+import { ProductAdvisors } from "./ProductAdvisors";
 import styles from "./ProductPurchase.module.css";
 
 const COLLECTION_LABEL: Record<string, string> = {
@@ -69,7 +70,7 @@ export function ProductPurchase({ product }: { product: Product }) {
 
         <p className={styles.price}>
           {formatPrice(product.price)}
-          <span>Price in CNY · taxes and shipping confirmed before payment</span>
+          <span>Price in USD · taxes and shipping confirmed before payment</span>
         </p>
         <p className={styles.edition}>
           {descriptor || (available ? `${product.stock} in stock` : "Sold out")}
@@ -110,7 +111,7 @@ export function ProductPurchase({ product }: { product: Product }) {
             <span className={styles.addonTitle}>Add the Accessory</span>
             <span className={styles.addonState}>
               {selected ? selected.label : "No one selected"}
-              <span>{selected ? formatPrice(selected.priceDelta) : "CNY 0"}</span>
+              <span>{selected ? formatPrice(selected.priceDelta) : "USD 0"}</span>
             </span>
             <span className={styles.addonCount}>+{optionCount}</span>
             <ChevronDownIcon size={14} className={styles.chevron} />
@@ -130,7 +131,7 @@ export function ProductPurchase({ product }: { product: Product }) {
                   No accessory
                   <em>Included</em>
                 </span>
-                <span>CNY 0</span>
+                <span>USD 0</span>
               </label>
               {product.addOns.map((addon) => (
                 <label className={styles.option} key={addon.id}>
@@ -169,14 +170,16 @@ export function ProductPurchase({ product }: { product: Product }) {
           <span>{available ? "Add to cart" : "Sold out"}</span>
           <span className={styles.buyPrice}>{formatPrice(total)}</span>
         </button>
-        {added && <p className={styles.status}>Added. Open the bag to check out.</p>}
+        {added && <p className={styles.status}>Added. Send the cart as an availability enquiry.</p>}
 
         <div className={styles.assurance}>
+          <p>Every watch is inspected for authenticity before it is listed.</p>
           <p>Payment is arranged with the studio after availability is confirmed.</p>
-          <p>Shipping cost and lead time are confirmed before payment.</p>
-          <p>14-day return right where applicable; see Shipping &amp; Returns.</p>
+          <p>14-day money-back guarantee from delivery; see Shipping &amp; Returns.</p>
           <p>Warranty terms, if any, are confirmed in writing before payment.</p>
         </div>
+
+        <ProductAdvisors product={product} />
 
         <nav className={styles.tabs} aria-label="Product sections">
           <a href="#specs">Specs</a>

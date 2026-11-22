@@ -301,7 +301,7 @@ function toProduct(entry: EmdashEntry): Product | null {
     subtitle: text(data.subtitle ?? data.sub_name) || record.model || "",
     price,
     stock,
-    currency: text(data.currency).toUpperCase() || "CNY",
+    currency: "USD",
     edition: edition ?? null,
     editionLabel:
       text(data.edition_label) ||
@@ -467,10 +467,8 @@ export function clearCatalogCache() {
 
 
 import collectionData from "./data/collections.json";
-import storyData from "./data/stories.json";
 
 export const collectionCatalog = collectionData;
-export const storyCatalog = storyData;
 
 
 export function listProducts(products: Product[], url: URL) {
