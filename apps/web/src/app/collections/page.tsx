@@ -21,12 +21,12 @@ export default async function CollectionsPage() {
       <div className="container">
         <PageHeader
           title="Collections"
-          intro="OUDYN is organised by use, not by season. Each family shares a case architecture and a dial logic; the differences are the ones that change how a watch reads on the wrist."
+          intro="The catalogue is grouped by type to make browsing easier. These are browsing groups, not manufacturer collections."
           meta={
             <>
               <span>{collections.length} families</span>
               <span>{total} references</span>
-              <span>Milano</span>
+              <span>Hong Kong &amp; Guangzhou</span>
             </>
           }
         />

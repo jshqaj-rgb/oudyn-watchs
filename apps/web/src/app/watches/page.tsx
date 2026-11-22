@@ -5,7 +5,7 @@ import { getCollections, getProducts } from "@/lib/api";
 export const metadata: Metadata = {
   title: "Pre-owned watches",
   description:
-    "Pre-owned luxury watches sourced, authenticated and serviced by OUDYN WATCHS in Milano.",
+    "Pre-owned watches listed by OUDYN WATCHS, an independent reseller based in Hong Kong and Guangzhou.",
 };
 
 export default async function WatchesPage() {

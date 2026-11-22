@@ -110,9 +110,9 @@ export function CartDrawer() {
                 <span className="mono">Subtotal</span>
                 <span className={styles.total}>{formatPrice(subtotal)}</span>
               </div>
-              <p className={styles.note}>Shipping and duties calculated at checkout. Free shipping within the EU.</p>
+              <p className={styles.note}>Shipping and import taxes are confirmed before payment. No online checkout.</p>
               <Link href="/checkout" className={styles.checkout} onClick={closeCart}>
-                Checkout
+                Request availability
               </Link>
               <button type="button" className={styles.continue} onClick={closeCart}>
                 Continue browsing

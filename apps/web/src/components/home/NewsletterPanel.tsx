@@ -25,7 +25,7 @@ export function NewsletterPanel({ className = "" }: { className?: string }) {
   return (
     <div className={`${styles.panel} ${className}`}>
       <p className={styles.panelLabel}>Newsletter</p>
-      <h2 className={styles.panelTitle}>Dispatches from the workshop</h2>
+      <h2 className={styles.panelTitle}>Notes from OUDYN</h2>
       {status === "done" ? (
         <p className={styles.panelSuccess} role="status">
           You are on the list. Next dispatch when a reference is released.
@@ -33,7 +33,7 @@ export function NewsletterPanel({ className = "" }: { className?: string }) {
       ) : (
         <>
           <p className={styles.panelText}>
-            New references, restocks and archive notes. One letter a month, no more.
+            Reference notes and new listings. One letter a month, no more.
           </p>
           <form className={styles.form} onSubmit={onSubmit}>
             <label className={styles.field}>

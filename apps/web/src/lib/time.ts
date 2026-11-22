@@ -1,4 +1,4 @@
-export const ROME_TIME_ZONE = "Europe/Rome";
+export const ROME_TIME_ZONE = "Asia/Hong_Kong";
 
 const timeFormatter = new Intl.DateTimeFormat("en-GB", {
   timeZone: ROME_TIME_ZONE,
@@ -108,7 +108,7 @@ let weatherCache: { value: MilanWeather; at: number } | null = null;
 let weatherRequest: Promise<MilanWeather | null> | null = null;
 
 export function weatherLabel(code: number): string {
-  return WEATHER_LABELS[code] ?? "Milan";
+  return WEATHER_LABELS[code] ?? "Hong Kong";
 }
 
 export async function fetchMilanWeather(): Promise<MilanWeather | null> {
@@ -120,7 +120,7 @@ export async function fetchMilanWeather(): Promise<MilanWeather | null> {
   weatherRequest = (async () => {
     try {
       const response = await fetch(
-        "https://api.open-meteo.com/v1/forecast?latitude=45.4642&longitude=9.1900&current=temperature_2m,weather_code&timezone=Europe%2FRome",
+        "https://api.open-meteo.com/v1/forecast?latitude=22.3193&longitude=114.1694&current=temperature_2m,weather_code&timezone=Asia%2FHong_Kong",
         { cache: "no-store" },
       );
       if (!response.ok) return null;

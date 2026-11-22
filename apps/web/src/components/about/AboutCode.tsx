@@ -1,7 +1,3 @@
-"use client";
-
-import { useState } from "react";
-import { clientNewsletter } from "@/lib/client-api";
 import styles from "./AboutCode.module.css";
 
 const RULES = [
@@ -16,25 +12,6 @@ const RULES = [
 ];
 
 export function AboutCode() {
-  const [email, setEmail] = useState("");
-  const [state, setState] = useState<"idle" | "loading" | "done" | "error">("idle");
-  const [message, setMessage] = useState("");
-
-  const submit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    if (!email.trim()) return;
-    setState("loading");
-    try {
-      await clientNewsletter(email.trim());
-      setState("done");
-      setMessage("You are on the list.");
-      setEmail("");
-    } catch (error) {
-      setState("error");
-      setMessage(error instanceof Error ? error.message : "Subscription failed.");
-    }
-  };
-
   return (
     <section className={styles.code} id="quality" aria-labelledby="code-title">
       <div className={styles.inner}>
@@ -44,26 +21,9 @@ export function AboutCode() {
             A short manual for buying a second-hand watch.
           </h2>
           <p className={styles.body}>
-            We publish the rules we buy against, so a watch can be judged against evidence rather
-            than a story. Notes from the studio, one letter a month.
+            These are the rules we buy against. No newsletter, no account, no marketing list — just
+            the standard we use to describe a watch.
           </p>
-          <form className={styles.form} onSubmit={submit}>
-            <label className={styles.field}>
-              <span>Email address</span>
-              <input
-                type="email"
-                required
-                value={email}
-                onChange={(event) => setEmail(event.target.value)}
-                placeholder="you@example.com"
-                autoComplete="email"
-              />
-            </label>
-            <button type="submit" disabled={state === "loading"}>
-              {state === "loading" ? "Joining…" : "Join the list"}
-            </button>
-          </form>
-          {message && <p className={styles.status}>{message}</p>}
         </div>
 
         <ol className={styles.rules}>

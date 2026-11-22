@@ -49,7 +49,6 @@ export function ProductSpecs({ product }: { product: Product }) {
     { value: movement, label: "movement" },
     { value: water, label: "water resistant" },
     { value: power ? `${power} Hours` : "", label: "power reserve" },
-    { value: "24 Months", label: "warranty" },
   ].filter((stat) => stat.value);
 
   return (

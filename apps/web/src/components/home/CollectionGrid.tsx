@@ -52,7 +52,7 @@ export function CollectionGrid({ tiles }: { tiles: Tile[] }) {
             <Link href="/sell" className={styles.tile} aria-label="Sell your watch to OUDYN">
               <div className={styles.media}>
                 <Image
-                  src="/images/rolex/store-front.jpg"
+                  src="/images/rolex/rolex-white.jpg"
                   alt=""
                   fill
                   sizes="(max-width: 767px) 50vw, 50vw"

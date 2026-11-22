@@ -172,7 +172,7 @@ function localWatchImages(id: string, data: Record<string, unknown>, record: Rec
   let hash = 0;
   for (let i = 0; i < id.length; i += 1) hash = (hash * 31 + id.charCodeAt(i)) >>> 0;
   const shift = hash % pool.length;
-  return [...pool.slice(shift), ...pool.slice(0, shift)].map((name) => `/images/rolex/${name}.jpg`);
+  return [`/images/rolex/${pool[shift]}.jpg`];
 }
 
 function isPlaceholderHost(url: string): boolean {
@@ -263,7 +263,7 @@ function toProduct(entry: EmdashEntry): Product | null {
     sourceImage: sourceImages[0],
     addOns: addOns(data.add_ons ?? data.addons),
     included,
-    isNew: bool(data.is_new) || true,
+    isNew: bool(data.is_new),
     featured: bool(data.featured),
     soldOut: stock <= 0,
     releasedAt: year ? `${year}-01-01T00:00:00.000Z` : updated || new Date(0).toISOString(),

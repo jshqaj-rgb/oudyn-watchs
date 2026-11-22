@@ -58,7 +58,7 @@ export default async function CollectionPage({ params }: { params: Params }) {
             <>
               <span>{String(collection.count).padStart(2, "0")} references</span>
               {Number.isFinite(cheapest) && <span>From {formatPrice(cheapest)}</span>}
-              <span>Built to order · Milano</span>
+              <span>Pre-owned · Hong Kong & Guangzhou</span>
             </>
           }
         />

@@ -34,7 +34,7 @@ export function ContactForm({ defaultSubject = "Buy a watch", subjectOptions }: 
     try {
       const result = await clientContact({ name, email, subject, reference, message });
       setState("done");
-      setFeedback(`Message received. Reference ${result.messageId}. We reply within one working day.`);
+      setFeedback(`Message received. Reference ${result.messageId}. We will reply when we have checked the request.`);
       setName("");
       setEmail("");
       setReference("");

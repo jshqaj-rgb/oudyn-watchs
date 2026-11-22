@@ -94,8 +94,8 @@ export function WishlistView() {
         </div>
       )}
       <p className={styles.footnote}>
-        {String(saved.length).padStart(2, "0")} saved · prices in EUR · stock is confirmed at
-        checkout
+        {String(saved.length).padStart(2, "0")} saved · prices in CNY · stock is not reserved; confirm
+        availability by enquiry
       </p>
     </>
   );

@@ -257,13 +257,13 @@ export function CatalogBrowser({
               <h1 className={styles.heroTitle} id="page-title">
                 {search
                   ? `Search results for “${search}”`
-                  : "Crafting modern timepieces that merge iconic design, advanced technical solutions, and Italian craftsmanship."}
+                  : "Pre-owned Rolex, independently inspected in Hong Kong."}
               </h1>
               <div className={styles.heroMeta}>
                 <span>
                   {mounted && clock ? clock.time : "--:--:--"}
                   <br />
-                  Milano, Italy
+                  Hong Kong
                   <br />
                   {mounted && weather ? `${weather.temperature}° ${weather.label}` : "Local weather"}
                 </span>
@@ -340,16 +340,16 @@ export function CatalogBrowser({
       {services && (
         <section className={styles.services} aria-label="Service promises">
           <div>
-            <h2>24 Months Warranty</h2>
-            <p>Each watch is covered for two years against manufacturing defects.</p>
+            <h2>Documented condition</h2>
+            <p>Condition, set contents and known faults are written down before sale.</p>
           </div>
           <div>
-            <h2>Easy Exchanges &amp; Returns</h2>
-            <p>Fourteen days to return or exchange an unworn reference, no questions asked.</p>
+            <h2>14-day return right</h2>
+            <p>Where applicable. Read the Shipping &amp; Returns page for conditions.</p>
           </div>
           <div>
-            <h2>Free Shipping</h2>
-            <p>Insured delivery on all orders. Taxes and duties are included at checkout.</p>
+            <h2>Worldwide shipping</h2>
+            <p>Cost, insurance and import taxes are confirmed before payment.</p>
           </div>
         </section>
       )}

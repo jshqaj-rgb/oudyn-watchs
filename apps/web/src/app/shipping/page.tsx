@@ -3,51 +3,50 @@ import { ContentPage } from "@/components/static/ContentPage";
 
 export const metadata: Metadata = {
   title: "Shipping & returns",
-  description:
-    "Insured shipping, delivery times, duties, returns and warranty for watches bought from OUDYN WATCHS.",
+  description: "How OUDYN WATCHS confirms shipping, insurance, taxes and returns.",
 };
 
 export default function ShippingPage() {
   return (
     <ContentPage
       eyebrow="Shipping & returns"
-      title="Insured, signed for, and packed like it matters."
-      intro="Every watch ships fully insured in its travel case. Delivery is signature-required; we do not leave watches at a door."
+      title="Shipping is quoted, not promised."
+      intro="We ship from Hong Kong. Cost, insurance, lead time and import taxes are confirmed in writing before payment, because they depend on the destination and the value of the watch."
       sections={[
         {
-          title: "Dispatch and delivery",
+          title: "Before payment",
           body: [
-            "Orders placed before 14:00 CET on a working day are usually dispatched the same day. Watches that need a final regulation may take two to three working days.",
-            "Italy: 1–2 working days. European Union: 2–4 working days. United Kingdom, Switzerland and Norway: 3–5 working days. Rest of world: 4–8 working days, depending on customs.",
+            "We confirm the destination, carrier, insured value and total shipping cost in writing. We do not describe a delivery date until the carrier booking is confirmed.",
           ],
         },
         {
-          title: "Shipping cost and duties",
+          title: "Import taxes and duties",
           body: [
-            "Shipping is complimentary on all watch orders. Prices include VAT for EU deliveries; VAT is removed at checkout for orders shipped outside the EU where the destination allows it.",
-            "Import duties and local taxes outside the EU are the responsibility of the buyer. We declare the full value on every shipment and cannot mark a watch as a gift or lower the value.",
+            "Import taxes and duties depend on the destination and are not included in the CNY price shown on the listing. We tell you what we know before payment; any charge collected by customs is the buyer's responsibility unless we state otherwise in writing.",
           ],
         },
         {
-          title: "Packaging and insurance",
+          title: "Packing and insurance",
           body: [
-            "Watches travel in the OUDYN travel case, inside a plain outer box, with the authentication report and warranty card. The parcel is insured for the full purchase value until signature.",
-            "If a parcel arrives damaged, photograph the box before opening it and contact us the same day. If the watch is not as described, stop and write to us before wearing it.",
+            "Watches are packed for transit and insured for the confirmed value. A signature is required on delivery. If a parcel arrives damaged, keep the packaging and contact us before opening the watch.",
           ],
         },
         {
           title: "Returns",
           body: [
-            "You may return a watch within 14 days of delivery for a full refund, provided it is unworn, complete and in the condition it was sent. Straps that have been worn, sized bracelets and engraved casebacks are not returnable.",
-            "Start a return by writing to studio@oudyn.com with the order number. We arrange insured collection and refund within five working days of inspection. Original shipping costs are refunded for EU orders; return shipping is deducted outside the EU.",
+            "Any return right is confirmed in writing before payment and is subject to the condition stated in that confirmation. Statutory rights are unaffected.",
+            "Do not send a watch back without written instructions. We will confirm the return address, carrier and insurance requirements first.",
           ],
         },
         {
           title: "Warranty",
           body: [
-            "Every watch carries a two-year warranty on the movement from the delivery date. The warranty covers mechanical failure, not damage from impact, water ingress after an opened case, or normal wear.",
-            "Service under warranty is arranged by the studio. Do not take a warranty watch to a third-party watchmaker without speaking to us first.",
+            "There is no blanket warranty on this website. Any warranty applies only if it is written into the documents for that specific watch. This page is not a warranty.",
           ],
+        },
+        {
+          title: "Questions",
+          body: ["Write to studio@oudyn.com with the reference number and destination country."],
         },
       ]}
     />

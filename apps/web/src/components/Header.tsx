@@ -11,7 +11,6 @@ const NAV = [
   { href: "/watches?sort=newest", label: "New in" },
   { href: "/watches", label: "Watches" },
   { href: "/sell", label: "Sell" },
-  { href: "/stories", label: "Stories" },
   { href: "/about", label: "Our world" },
   { href: "/contact", label: "Contact" },
 ];
@@ -28,8 +27,7 @@ export function Header() {
     pathname === "/" ||
     pathname === "/watches" ||
     pathname === "/about" ||
-    pathname === "/stories" ||
-    pathname.startsWith("/stories/") ||
+    pathname === "/contact" ||
     pathname === "/sell";
 
   useEffect(() => {
@@ -91,9 +89,6 @@ export function Header() {
           >
             Search
           </button>
-          <Link href="/account" className={styles.action}>
-            Account
-          </Link>
           <Link href="/wishlist" className={styles.action}>
             Wishlist
             {wishlistCount > 0 && <span className={styles.count}>{wishlistCount}</span>}
@@ -145,11 +140,10 @@ export function Header() {
             <button type="button" onClick={() => { setMenuOpen(false); setSearchOpen(true); }}>
               Search
             </button>
-            <Link href="/account">Account</Link>
             <Link href="/wishlist">Wishlist {wishlistCount > 0 ? `(${wishlistCount})` : ""}</Link>
             <Link href="/archive">Archive</Link>
           </div>
-          <p className={styles.mobileNote}>OUDYN · Milano · 45.4642° N</p>
+          <p className={styles.mobileNote}>OUDYN · Hong Kong · By appointment</p>
         </div>
       )}
 

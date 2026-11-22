@@ -2,40 +2,40 @@
   {
     "handle": "classic",
     "title": "Classic",
-    "description": "Time-only instruments with a calm, legible architecture. Designed to be worn every day for a very long time.",
-    "statement": "The permanent collection",
+    "description": "Pre-owned time-only and date references currently listed by OUDYN.",
+    "statement": "Time-only and date references",
     "previewSlug": "due-36",
     "previewView": "dial"
   },
   {
     "handle": "toolwatches",
     "title": "Toolwatches",
-    "description": "Sealed cases, high-contrast dials and bezels you can actually use. Built for weather, water and unplanned days.",
-    "statement": "Purpose-built instruments",
+    "description": "Pre-owned sports, dive and travel references currently listed by OUDYN.",
+    "statement": "Sports, dive and travel references",
     "previewSlug": "nove-diver",
     "previewView": "front"
   },
   {
     "handle": "collaborations",
     "title": "Collaborations",
-    "description": "Short-run studies made with studios, publications and people whose work we follow.",
-    "statement": "Outside voices, inside the case",
+    "description": "References with a documented co-branded or collaboration edition.",
+    "statement": "Documented collaboration references",
     "previewSlug": "sette-chrono",
     "previewView": "front"
   },
   {
     "handle": "limited-edition",
-    "title": "Limited Edition",
-    "description": "Numbered pieces with a fixed production run. Once the edition is closed, it does not return.",
-    "statement": "A fixed number, then nothing",
+    "title": "Numbered",
+    "description": "Numbered references where the seller can document the number.",
+    "statement": "Numbered references",
     "previewSlug": "quattro-black",
     "previewView": "front"
   },
   {
     "handle": "accessories",
     "title": "Accessories",
-    "description": "Straps, cases and the small objects that keep a watch in use.",
-    "statement": "Parts and pieces",
+    "description": "Straps and accessories currently listed.",
+    "statement": "Straps and accessories",
     "previewSlug": "suede-strap-20",
     "previewView": "strap"
   }

@@ -69,7 +69,7 @@ export function ProductPurchase({ product }: { product: Product }) {
 
         <p className={styles.price}>
           {formatPrice(product.price)}
-          <span>Tax &amp; duties included</span>
+          <span>Price in CNY · taxes and shipping confirmed before payment</span>
         </p>
         <p className={styles.edition}>
           {descriptor || (available ? `${product.stock} in stock` : "Sold out")}
@@ -110,7 +110,7 @@ export function ProductPurchase({ product }: { product: Product }) {
             <span className={styles.addonTitle}>Add the Accessory</span>
             <span className={styles.addonState}>
               {selected ? selected.label : "No one selected"}
-              <span>{selected ? formatPrice(selected.priceDelta) : "¥ 0"}</span>
+              <span>{selected ? formatPrice(selected.priceDelta) : "CNY 0"}</span>
             </span>
             <span className={styles.addonCount}>+{optionCount}</span>
             <ChevronDownIcon size={14} className={styles.chevron} />
@@ -130,7 +130,7 @@ export function ProductPurchase({ product }: { product: Product }) {
                   No accessory
                   <em>Included</em>
                 </span>
-                <span>¥ 0</span>
+                <span>CNY 0</span>
               </label>
               {product.addOns.map((addon) => (
                 <label className={styles.option} key={addon.id}>
@@ -173,9 +173,9 @@ export function ProductPurchase({ product }: { product: Product }) {
 
         <div className={styles.assurance}>
           <p>Payment is arranged with the studio after availability is confirmed.</p>
-          <p>Insured shipping within 2/4 business days.</p>
-          <p>You may return the watch within 14 days.</p>
-          <p>24 months warranty on the movement.</p>
+          <p>Shipping cost and lead time are confirmed before payment.</p>
+          <p>14-day return right where applicable; see Shipping &amp; Returns.</p>
+          <p>Warranty terms, if any, are confirmed in writing before payment.</p>
         </div>
 
         <nav className={styles.tabs} aria-label="Product sections">

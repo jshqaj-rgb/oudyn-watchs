@@ -2,62 +2,61 @@ import type { Metadata } from "next";
 import { ContentPage } from "@/components/static/ContentPage";
 
 export const metadata: Metadata = {
-  title: "Terms of sale",
-  description:
-    "Terms and conditions for buying pre-owned watches from OUDYN WATCHS, including orders, authentication, returns and warranty.",
+  title: "Terms",
+  description: "Terms for enquiries and purchases from OUDYN WATCHS.",
 };
 
 export default function TermsPage() {
   return (
     <ContentPage
       eyebrow="Terms"
-      title="The terms behind a second-hand watch."
-      intro="These terms apply to purchases made through this website. They sit alongside the authentication report and warranty supplied with each watch."
+      title="Terms for a second-hand watch."
+      intro="These terms describe how this website works today. Any purchase is confirmed in writing before payment."
       sections={[
         {
           title: "About the seller",
           body: [
-            "OUDYN WATCHS, Via Tortona 27, 20144 Milano, Italy. Contact: studio@oudyn.com. The site is operated from Italy and governed by Italian law.",
+            "OUDYN WATCHS is an independent reseller of pre-owned watches, operating from Hong Kong and Guangzhou. Contact: studio@oudyn.com.",
+            "Company registration details and the appointment address are provided before a purchase. OUDYN WATCHS is not affiliated with Rolex SA or any watch manufacturer.",
           ],
         },
         {
-          title: "Orders and acceptance",
+          title: "This website is an enquiry service",
           body: [
-            "An order is an offer to buy. We accept it when we confirm dispatch; until then the watch remains available. If a watch sells in the studio before the online order is processed, we cancel and refund in full.",
-            "Prices are shown in euros and include VAT for EU deliveries. We may correct a manifest pricing error before accepting an order.",
+            "Prices, stock and specifications are indicative. Submitting the contact form or emailing us does not create an order and does not reserve a watch.",
+            "No payment is taken on this website. A sale exists only after we confirm the reference, condition, final total, shipping and any import taxes in writing, and payment has cleared.",
+          ],
+        },
+        {
+          title: "Prices, currency and taxes",
+          body: [
+            "Prices are shown in CNY. Shipping, insurance and import taxes are confirmed before payment. We do not describe a total as including duties or VAT unless that is stated in the written confirmation for that sale.",
           ],
         },
         {
           title: "Condition and photographs",
           body: [
-            "Every watch is pre-owned unless expressly described as new old stock. The photographs show the actual piece. Small variations in colour are possible between screens; condition grades and written descriptions take precedence.",
-            "Box, papers and accessories are included only where listed. A “watch only” sale includes the watch and the OUDYN travel case, not the original manufacturer's box or papers.",
+            "Every watch is pre-owned unless expressly described otherwise. Condition, set contents and known faults are stated in the listing or condition report.",
+            "Some images are labelled placeholders. A placeholder image is not a photograph of the watch being sold. Actual photographs are supplied on request before payment.",
           ],
         },
         {
-          title: "Authentication and verification",
+          title: "Inspection and paperwork",
           body: [
-            "Our authentication report records what we inspected and what we concluded. It is not a manufacturer's certificate. If an independent authentication establishes that a watch is not authentic, return it within 30 days for a full refund.",
+            "Our condition report records what we examined. It is not a manufacturer's certificate and is not a guarantee of authenticity by the manufacturer. Anything we could not verify is described as unverified.",
           ],
         },
         {
-          title: "Payment",
+          title: "Payment, returns and warranty",
           body: [
-            "We accept the payment methods shown at checkout. Watches are not released until payment clears. For bank transfers, the watch is reserved for two working days.",
+            "Payment is arranged separately after written confirmation. Any return right, warranty or after-sales term applies only if it is stated in that written confirmation. Statutory rights that cannot be excluded are unaffected.",
           ],
         },
         {
-          title: "Returns, warranty and liability",
+          title: "Trademarks and disputes",
           body: [
-            "The 14-day return right and two-year movement warranty are described in the shipping and returns page. The warranty does not cover impact damage, water ingress after a case has been opened by a third party, or normal wear.",
-            "Nothing in these terms limits rights that cannot be excluded under Italian or EU consumer law. Our liability for indirect or consequential loss is excluded to the extent permitted by law.",
-          ],
-        },
-        {
-          title: "Intellectual property and disputes",
-          body: [
-            "The OUDYN name, photography and written content are owned by OUDYN WATCHS. Manufacturer names and model references are used to identify the watches and remain the property of their owners.",
-            "Disputes are governed by Italian law and the courts of Milano, without prejudice to your right to bring proceedings in your country of residence.",
+            "Manufacturer names and model references identify the watches and remain the property of their owners. OUDYN WATCHS does not claim any manufacturer endorsement.",
+            "Questions about these terms can be sent to studio@oudyn.com. Nothing here limits a consumer's statutory right to bring a claim in an appropriate jurisdiction.",
           ],
         },
       ]}

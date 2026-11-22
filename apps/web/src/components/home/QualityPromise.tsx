@@ -8,18 +8,18 @@ import styles from "./QualityPromise.module.css";
 
 const CARDS = [
   {
-    title: "Authenticated, not assumed",
-    text: "Every reference is checked against its case, movement, dial and paperwork. We document what is original, what has been replaced and what we cannot verify.",
+    title: "Condition, written down",
+    text: "Case wear, visible faults, set contents and anything we cannot verify are recorded before a watch is offered.",
     Visual: PressureVisual,
   },
   {
-    title: "Serviced before it is sold",
-    text: "Movements are timed in six positions and serviced only when the readings require it. The timing sheet travels with the watch.",
+    title: "Inspected before it is listed",
+    text: "We examine what we can and describe the watch as it is. We do not claim a service history we cannot document.",
     Visual: RegulationVisual,
   },
   {
-    title: "A provenance you can keep",
-    text: "Each watch leaves with an authentication report, service record and photographs of the actual piece. Two-year warranty on the movement.",
+    title: "Terms before payment",
+    text: "The final CNY total, shipping, import taxes, return terms and any warranty are confirmed in writing before you pay.",
     Visual: CertificateVisual,
   },
 ];
@@ -33,7 +33,7 @@ export function QualityPromise() {
             The OUDYN standard
           </h2>
           <Link href="/authentication" className="textLink">
-            How we authenticate
+            Read our inspection standard
           </Link>
         </div>
 

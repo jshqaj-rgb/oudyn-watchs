@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     const product = await getProduct(slug);
     return {
       title: [product.name, product.subtitle].filter(Boolean).join(" — "),
-      description: product.shortDescription || `Pre-owned ${product.name}, authenticated in Milano.`,
+      description: product.shortDescription || `Pre-owned ${product.name}, listed by OUDYN WATCHS.`,
     };
   } catch {
     return { title: "Watch" };

@@ -42,7 +42,7 @@ export function NewArrivals({ products }: { products: Product[] }) {
             <h2 id="new-arrivals-title" className={styles.title}>
               Latest acquisitions
             </h2>
-            <p className={styles.note}>Newly sourced pre-owned references. One example of each, photographed as received.</p>
+            <p className={styles.note}>Newly sourced pre-owned references. Placeholder images are labelled; ask for current photographs before paying.</p>
           </div>
           <div className={styles.actions}>
             <span className={styles.count}>{String(products.length).padStart(2, "0")} references</span>

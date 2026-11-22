@@ -28,9 +28,9 @@ export function LiveHeroDial({ className = "" }: { className?: string }) {
       viewBox="0 0 1000 1000"
       className={className}
       role="img"
-      aria-label={`OUDYN instrument dial showing ${timeLabel} in Milan`}
+      aria-label={`OUDYN instrument dial showing ${timeLabel} in Hong Kong`}
     >
-      <title>{`Milano ${timeLabel}`}</title>
+      <title>{`Hong Kong ${timeLabel}`}</title>
       <circle cx="500" cy="500" r="500" fill="var(--color-black)" />
       <circle cx="500" cy="500" r="478" fill="var(--color-steel-gray)" />
       <circle cx="500" cy="500" r="462" fill="var(--color-black)" />

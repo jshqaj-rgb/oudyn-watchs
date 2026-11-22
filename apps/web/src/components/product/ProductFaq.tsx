@@ -6,14 +6,14 @@ import styles from "./ProductFaq.module.css";
 
 const QUESTIONS = [
   {
-    question: "Is every watch authenticated?",
+    question: "How is a watch inspected?",
     answer:
-      "Yes. Every reference is examined in the Milano studio before it is listed: case, dial, movement, bracelet or strap, and the paperwork that came with it. The findings are written into the condition report, and anything we cannot verify is described as such rather than assumed.",
+      "Every reference is examined before it is listed: case, dial, movement, bracelet or strap, and the paperwork that came with it. The findings are written into the condition report. Anything we cannot verify is described as unverified, not assumed.",
   },
   {
     question: "Can I see the condition report?",
     answer:
-      "Write to the studio with the reference number and we will send the report, including photographs of the case flanks, lugs, crystal and caseback. If you are viewing in person, the watch is on the bench and you are welcome to inspect it under a loupe.",
+      "Write to us with the reference number and we will send the report, including photographs of the case flanks, lugs, crystal and caseback. If you are viewing in person, you are welcome to inspect the watch under a loupe.",
   },
   {
     question: "Has the watch been serviced?",
@@ -23,17 +23,17 @@ const QUESTIONS = [
   {
     question: "What is included with the watch?",
     answer:
-      "The listing states whether it is a full set, box and papers, or watch only. Every sale includes the OUDYN authentication report and a two-year warranty on the movement. Any additional strap, tool or pouch shown in the photographs is listed explicitly.",
+      "The listing states whether it is a full set, box and papers, or watch only. A condition report is supplied. Any warranty is only valid if it is stated in writing for that specific watch. Additional straps, tools or pouches are listed explicitly.",
   },
   {
     question: "Can I return the watch?",
     answer:
-      "Yes, within 14 days of delivery, provided the watch is returned in the condition in which it was sent, with all accompanying documents and the security tag intact. Return shipping is insured and arranged with the studio.",
+      "Any return right is confirmed in writing before payment, together with the condition the watch must be returned in. Statutory rights are unaffected. Do not send a watch back without written instructions.",
   },
   {
     question: "How is the watch shipped?",
     answer:
-      "Fully insured, signature required, within 2/4 business days of cleared payment. We ship from Milano to the countries listed at checkout. Duties and taxes are shown before you confirm the order, not added afterwards.",
+      "We ship from Hong Kong. Cost, insurance, lead time and any import taxes are confirmed in writing before payment. We do not describe a delivery date until the carrier booking is confirmed.",
   },
 ];
 
@@ -79,7 +79,7 @@ export function ProductFaq() {
         <div className={styles.media}>
           <Image
             src="/images/rolex/rolex-wrist.jpg"
-            alt="OUDYN watch worn on the wrist"
+            alt="Placeholder photograph of a watch worn on the wrist"
             fill
             sizes="(max-width: 1023px) 100vw, 22vw"
             className={styles.image}

@@ -6,7 +6,7 @@ import styles from "./page.module.css";
 
 export const metadata: Metadata = {
   title: "Archive",
-  description: "Past OUDYN references, kept as a record. No longer in production.",
+  description: "Sold or unavailable references, kept as a record.",
 };
 
 export default async function ArchivePage() {
@@ -18,7 +18,7 @@ export default async function ArchivePage() {
       <div className="container">
         <PageHeader
           title="Archive"
-          intro="Series that have left production. They remain here as a record of the drawing, the specification and the number of pieces made — not as a shop."
+          intro="References that are no longer available through OUDYN. They stay listed as a record of what was offered, not as items for sale."
           meta={
             <>
               <span>{items.length} archived references</span>
@@ -43,10 +43,9 @@ export default async function ArchivePage() {
         <div className={styles.note}>
           <p className={styles.noteTitle}>About the archive</p>
           <p>
-            Archived references are not reissued. Replacement straps, crystals and gaskets remain
-            available while stock lasts; movements can still be serviced at the Milano workshop.
-            Write to <a href="mailto:studio@oudyn.com">studio@oudyn.com</a> with the reference
-            number engraved on the caseback.
+            These watches are not available to buy. If you are looking for something similar, write
+            to <a href="mailto:studio@oudyn.com">studio@oudyn.com</a> with the reference you have in
+            mind. We do not promise to find an identical piece.
           </p>
         </div>
       </div>

@@ -1,0 +1,14 @@
+import { chromium } from 'playwright';
+const b = await chromium.launch({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' });
+const p = await (await b.newContext({ viewport: { width: 1440, height: 900 } })).newPage();
+p.on('console', m => { if (m.type()==='error') console.log('CONSOLE', m.text().slice(0,300)); });
+p.on('pageerror', e => console.log('PAGEERROR', e.message));
+await p.goto('http://127.0.0.1:5173/collections/all', { waitUntil: 'networkidle' });
+await p.waitForTimeout(800);
+console.log('H1:', await p.textContent('.collection-hero h1'));
+console.log('P:', await p.textContent('.collection-hero p'));
+console.log('META:', await p.evaluate(async () => (await fetch('/collections')).status));
+await p.goto('http://127.0.0.1:5173/products/small-easy-zipper-tote', { waitUntil: 'networkidle' });
+await p.waitForTimeout(800);
+console.log('PDP h1:', await p.textContent('h1').catch(()=> 'none'));
+await b.close();

@@ -99,7 +99,7 @@ export function RegulationVisual({ className, style }: VisualProps) {
 
 export function CertificateVisual({ className, style }: VisualProps) {
   return (
-    <svg viewBox="0 0 800 600" className={className} style={style} role="img" aria-label="Quality certificate issued with each watch">
+    <svg viewBox="0 0 800 600" className={className} style={style} role="img" aria-label="Inspection record illustration">
       <rect width="800" height="600" fill="#d9d9d9" />
       <g transform="rotate(-2 400 300)">
         <rect x="190" y="86" width="420" height="440" fill="#ffffff" stroke="#000000" strokeOpacity="0.2" />
@@ -118,7 +118,7 @@ export function CertificateVisual({ className, style }: VisualProps) {
           Movement inspected, regulated and pressure tested
         </text>
         <text x="232" y="282" fill="#505050" fontFamily='"Helvetica Neue", Helvetica, Arial, sans-serif' fontSize="12">
-          before dispatch from the workshop.
+          before the watch is released.
         </text>
         {range(5).map((index) => (
           <line

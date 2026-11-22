@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { ArchiveItem, CollectionHandle, Product } from "@oudyn/contracts";
 import { formatPrice } from "@/lib/api";
+import { isPlaceholderImage } from "@/lib/images";
 import styles from "./ProductCard.module.css";
 
 type CardProduct = Product | ArchiveItem;
@@ -10,7 +11,7 @@ const COLLECTION_LABEL: Record<CollectionHandle, string> = {
   classic: "Classic",
   toolwatches: "Toolwatches",
   collaborations: "Collaborations",
-  "limited-edition": "Limited Edition",
+  "limited-edition": "Numbered",
   accessories: "Accessories",
 };
 
@@ -36,7 +37,7 @@ export function ProductCard({
       <div className={styles.media}>
         <Image
           src={image}
-          alt={`${product.name} — ${product.subtitle}`}
+          alt={isPlaceholderImage(image) ? "Placeholder photograph of a pre-owned watch" : `${product.name} — ${product.subtitle}`}
           fill
           priority={priority}
           sizes="(max-width: 767px) 50vw, (max-width: 1023px) 50vw, 25vw"
@@ -44,6 +45,7 @@ export function ProductCard({
         />
         {product.specLabel ? <span className={styles.spec}>{product.specLabel}</span> : null}
         {collectionLabel ? <span className={styles.collection}>{collectionLabel}</span> : null}
+        {isPlaceholderImage(image) && <span className={styles.placeholder}>Placeholder</span>}
         {archived && <span className={styles.archive}>{product.archiveLabel}</span>}
       </div>
       <div className={styles.info}>

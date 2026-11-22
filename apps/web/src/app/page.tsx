@@ -20,7 +20,7 @@ export default async function HomePage() {
   const tileImages: Record<string, string> = {
     classic: "/images/rolex/rolex-white.jpg",
     toolwatches: "/images/rolex/rolex-wrist.jpg",
-    collaborations: "/images/rolex/rolex-store.jpg",
+    collaborations: "/images/rolex/rolex-dark.jpg",
     "limited-edition": "/images/rolex/rolex-dark.jpg",
   };
   const tiles = collections

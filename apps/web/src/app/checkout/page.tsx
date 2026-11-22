@@ -3,8 +3,8 @@ import { PageHeader } from "@/components/layout/PageHeader";
 import { CheckoutView } from "@/components/store/CheckoutView";
 
 export const metadata: Metadata = {
-  title: "Checkout",
-  description: "Confirm an OUDYN order. Stock is checked before payment.",
+  title: "Availability enquiry",
+  description: "Ask about a reference. No payment is taken online.",
 };
 
 export default function CheckoutPage() {
@@ -12,12 +12,12 @@ export default function CheckoutPage() {
     <main id="main" className="pageMain">
       <div className="container">
         <PageHeader
-          title="Checkout"
-          intro="Orders are confirmed by hand. Give us a delivery address; we check the reference against stock and send a secure payment link. Nothing is charged on this page."
+          title="Availability enquiry"
+          intro="No payment is taken on this site and no order is created. Send the reference you want; we confirm availability, condition and the final total in writing first."
           meta={
             <>
-              <span>Dispatch in 2–3 working days</span>
-              <span>Payment by secure link</span>
+              <span>No online payment</span>
+              <span>Enquiry only</span>
             </>
           }
         />

@@ -7,6 +7,7 @@ import type { Product } from "@oudyn/contracts";
 import { SpecGroups } from "@/components/product/SpecGroups";
 import { SpecAccordion } from "@/components/product/SpecAccordion";
 import { formatPrice } from "@/lib/api";
+import { isPlaceholderImage } from "@/lib/images";
 import styles from "./ModelDetail.module.css";
 
 export function ModelDetail({ products }: { products: Product[] }) {
@@ -46,7 +47,7 @@ export function ModelDetail({ products }: { products: Product[] }) {
               <Image
                 key={product.slug}
                 src={product.images[0] ?? "/images/placeholder-watch.svg"}
-                alt={`${product.name} front view`}
+                alt={isPlaceholderImage(product.images[0]) ? "Placeholder photograph of a pre-owned watch" : `${product.name}`}
                 fill
                 sizes="(max-width: 1023px) 100vw, 48vw"
                 className={styles.image}
@@ -54,7 +55,7 @@ export function ModelDetail({ products }: { products: Product[] }) {
             </div>
             <div className={styles.stageFoot}>
               <span>{product.ref}</span>
-              <span>Actual watch</span>
+              <span>{isPlaceholderImage(product.images[0]) ? "Placeholder image" : "This exact watch"}</span>
             </div>
           </Link>
         </div>

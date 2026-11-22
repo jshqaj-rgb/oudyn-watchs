@@ -3,65 +3,65 @@ import { ContentPage } from "@/components/static/ContentPage";
 
 export const metadata: Metadata = {
   title: "Privacy",
-  description:
-    "How OUDYN WATCHS collects, uses and protects personal data for orders, enquiries and newsletter subscriptions.",
+  description: "How OUDYN WATCHS handles enquiry and order data.",
 };
 
 export default function PrivacyPage() {
   return (
     <ContentPage
       eyebrow="Privacy"
-      title="Your data, kept to what the watch requires."
-      intro="This policy explains what we collect when you buy, sell, subscribe or write to us, and how to ask us to delete it."
+      title="Only the data needed to answer."
+      intro="This policy describes what this website currently collects. It does not claim an account system, analytics or payment processing that is not in place."
       sections={[
         {
           title: "Who is responsible",
           body: [
-            "OUDYN WATCHS, Via Tortona 27, 20144 Milano, Italy, is the data controller for this website. Write to studio@oudyn.com for any privacy request.",
+            "OUDYN WATCHS is an independent reseller operating from Hong Kong and Guangzhou. Privacy requests can be sent to studio@oudyn.com.",
+            "Company details and any representative required for a target market are provided before sales open in that market.",
           ],
         },
         {
-          title: "What we collect",
+          title: "What this site collects",
           body: [
-            "When you place an order we collect your name, email, delivery address, order lines and payment status. We do not store card numbers on our servers; payments are processed by the payment provider.",
-            "When you write to us we keep your name, email, subject, message and any reference number you include. Newsletter subscriptions store your email and the date you subscribed.",
-            "Our hosting and analytics providers may process technical data such as IP address, browser type and pages visited. We use this to keep the site working and to understand which references are viewed.",
+            "The contact form collects your name, email, subject, message and an optional reference number. If you send an availability enquiry, we also receive the references you selected and the email you write from.",
+            "The cart and wishlist are stored in your browser's local storage. They are not sent to us until you submit an enquiry.",
+            "We do not take card details, do not process online payments and do not create customer accounts.",
           ],
         },
         {
           title: "Why we use it",
           body: [
-            "To fulfil orders, authenticate watches, arrange shipping and handle warranty or returns. To answer enquiries and provide valuations. To send the newsletter when you have asked for it. To meet legal, accounting and tax obligations.",
+            "To reply to your enquiry, confirm a watch's availability and condition, and keep a record of what was agreed before a sale.",
           ],
           bullets: [
-            "Contract: processing an order or a repair",
-            "Legitimate interest: fraud prevention, site security, service improvement",
-            "Consent: newsletter and optional analytics cookies",
-            "Legal obligation: invoices, tax and consumer records",
+            "Contract or pre-contract steps: answering an availability enquiry",
+            "Legitimate interest: keeping a record of written confirmations",
+            "Legal obligation: records we are required to keep",
           ],
         },
         {
-          title: "Who we share it with",
+          title: "Storage and sharing",
           body: [
-            "We share only what is necessary with couriers, payment providers, our hosting provider and professional advisers. We do not sell personal data. Where a processor is outside the EEA, transfers rely on standard contractual clauses or an adequacy decision.",
+            "Enquiries submitted through the site are stored in Cloudflare KV and are accessible to the people who answer the inbox. We do not sell personal data.",
+            "We share data only with service providers needed to host the site or complete a sale, and only to the extent required.",
           ],
         },
         {
-          title: "How long we keep it",
+          title: "Retention",
           body: [
-            "Order and warranty records are kept for ten years to support authentication and service. Enquiries are kept for two years. Newsletter data is kept until you unsubscribe. Analytics data is kept for no longer than 14 months.",
+            "Enquiries are kept for as long as needed to answer them and to support any follow-up sale or after-sales question. You can ask us to delete an enquiry that did not lead to a sale.",
           ],
         },
         {
           title: "Your rights",
           body: [
-            "You can ask for a copy of your data, correct it, delete it, restrict processing or object to direct marketing. Write to studio@oudyn.com and we reply within one month. You can also complain to the Italian data protection authority (Garante per la protezione dei dati personali).",
+            "You can ask for a copy of your data, correction, deletion, restriction, or object to processing. Write to studio@oudyn.com. You may also complain to the data protection authority in your country.",
           ],
         },
         {
-          title: "Cookies",
+          title: "Cookies and local storage",
           body: [
-            "We use strictly necessary cookies for the cart, wishlist and checkout. Optional analytics cookies are only set after consent. You can clear or block cookies in your browser; the cart and wishlist may stop working if you do.",
+            "This site does not run analytics or advertising cookies. The cart and wishlist use browser local storage so a selection survives a page refresh. Clearing site data removes it.",
           ],
         },
       ]}

@@ -1,6 +1,6 @@
 # OUDYN WATCHS
 
-Pre-owned luxury watches, sourced, authenticated and sold one at a time from Milano.
+Independent reseller of pre-owned watches, operating from Hong Kong and Guangzhou. This is a catalogue and enquiry site: no online payment, no accounts and no guaranteed stock.
 
 The storefront is a Next.js static export deployed on Cloudflare Pages. Products come from the EmDash content API for merchant `mch_oudyn`; there is no local product catalogue. All runtime APIs are Cloudflare Pages Functions in `functions/api/` and call EmDash directly. No separate backend server is required.
 
@@ -17,7 +17,7 @@ The storefront is a Next.js static export deployed on Cloudflare Pages. Products
 ```text
 Build:    Next static export → packages/catalog → shop-edge 网关 → EmDash
 Runtime:  browser → /api/catalog/* → Pages Function → shop-edge 网关 → EmDash
-Writes:   orders / newsletter / contact → Pages Function → OUDYN_KV
+Writes:   contact enquiries → Pages Function → OUDYN_KV
 ```
 
 The build needs `SHOP_EDGE_SITE_KEY`（推荐）或 `EMDASH_READ_TOKEN`，因为 every product, collection, story and sitemap entry is prerendered. 配了 `SHOP_EDGE_SITE_KEY` 时走 `shop-edge` 网关，浏览器永远看不到 key；未配时回退直连 EmDash。
@@ -73,7 +73,7 @@ Set these in **Pages → Settings → Environment variables → Production** (an
 | `EMDASH_USE_SOURCE_IMAGES` | optional | optional | `1` keeps EmDash/Pexels covers |
 | `NEXT_PUBLIC_SITE_URL` | optional | — | Canonical URL, default `https://www.oudyn.com` |
 
-Bind a KV namespace named **`OUDYN_KV`** in **Settings → Functions → KV namespace bindings** to enable checkout requests, newsletter signup and the contact form. Product/story reads work without KV; writes return `503` until it is bound.
+Bind a KV namespace named **`OUDYN_KV`** in **Settings → Functions → KV namespace bindings** to enable the contact form. Product reads work without KV; enquiries return `503` until it is bound. Online checkout is disabled by design and returns `410`.
 
 Deploy through the GitHub integration, or manually:
 
@@ -92,13 +92,12 @@ npm run deploy
 | `/watches/[slug]` | 73/27 photo gallery + buy rail, condition, set, live specs, FAQ, related |
 | `/collections`, `/collections/[handle]` | Collection index and listing |
 | `/archive` | Sold and archived references |
-| `/stories`, `/stories/[slug]` | Buyer stories list and one page per owner |
-| `/about` | Dealer position, numbers, studio gallery, 2016–2026 timeline |
+| `/about` | Dealer position, disclosure standard, independence statement |
 | `/sell` | Sell/trade enquiry |
-| `/contact` | Studio address, hours, store photography, contact form |
+| `/contact` | Appointment-only contact details and enquiry form |
 | `/authentication`, `/shipping`, `/faq` | Authentication standard, delivery/returns, common questions |
 | `/privacy`, `/terms` | Legal pages |
-| `/wishlist`, `/account`, `/checkout` | Browser-local saved references and order request |
+| `/wishlist`, `/account`, `/checkout` | Saved references; accounts unavailable; checkout disabled and replaced by an enquiry |
 
 ## API
 
@@ -112,24 +111,21 @@ All production endpoints are Pages Functions:
 | GET | `/api/catalog/collections` | Collections with counts |
 | GET | `/api/catalog/collections/:handle` | Collection and products |
 | GET | `/api/catalog/archive` | Sold references |
-| GET | `/api/catalog/stories` | Six buyer stories |
-| GET | `/api/catalog/stories/:slug` | One story |
-| POST | `/api/catalog/orders` | Re-prices lines server-side and stores request |
-| POST | `/api/catalog/newsletter` | Stores an email |
+| POST | `/api/catalog/orders` | Disabled: returns `410`, no order is created |
 | POST | `/api/catalog/contact` | Stores an enquiry |
 | GET | `/api/zven-products` | Minimal EmDash-shaped array: `id`, `name`, `price`, `stock`, `image` |
 
 ## Data mapping
 
-The adapter reads `id`, `name`, `price`, `stock`, `cover_image`/`images`, then optional rich fields. Real EmDash records currently provide a Chinese `specs` object (brand, model, reference, year, case, material, movement, dial, bracelet, condition, accessories, warranty); it is split into REFERENCE / CASE / MOVEMENT / DIAL / BRACELET / CONDITION & SET groups. Missing fields are hidden, never invented. Prices are CNY and formatted `¥ 52,000`.
+The adapter reads `id`, `name`, `price`, `stock`, `cover_image`/`images`, then optional rich fields. Real EmDash records currently provide a Chinese `specs` object (brand, model, reference, year, case, material, movement, dial, bracelet, condition, accessories, warranty); it is split into REFERENCE / CASE / MOVEMENT / DIAL / BRACELET / CONDITION & SET groups. Missing fields are hidden, never invented. Prices are CNY and formatted `CNY 52,000`.
 
-Because the current EmDash covers are unrelated Pexels stock, product display images fall back to local Rolex placeholders. Set `EMDASH_USE_SOURCE_IMAGES=1` once the backend serves real watch photography. `/api/zven-products` always returns the original EmDash `cover_image`.
+Because the current EmDash covers are unrelated stock, product images are labelled placeholders. Set `EMDASH_USE_SOURCE_IMAGES=1` only once the backend serves real watch photography. `/api/zven-products` always returns the original `cover_image`.
 
 ## Content and imagery
 
-All photography in `apps/web/public/images/rolex/` is placeholder stock from Pexels. The watches shown are not the watches described. Replace them with the studio's own photographs before launch.
+All photography in `apps/web/public/images/rolex/` is placeholder stock. The watches shown are not the watches described, and product surfaces label these images as placeholders. Replace them with the seller's own photographs before launch.
 
-Buyer stories are written examples. Names, locations and purchase dates are illustrative; replace them with consented customer material before publishing.
+Buyer stories have been removed. No customer reviews are published until consented, verifiable material is available.
 
 ## Design
 
@@ -137,7 +133,7 @@ Six colours: black, studio white `#f6f6f6`, steel grey `#d9d9d9`, white, graphit
 
 ## Boundaries
 
-- No customer authentication, payment provider or inventory reservation.
-- Order, newsletter and contact writes require the `OUDYN_KV` binding.
+- No customer accounts, online payment, inventory reservation or order creation.
+- Contact writes require the `OUDYN_KV` binding.
 - Live weather uses Open-Meteo and fails quietly to `WEATHER —`.
-- Checkout is an order request; payment is arranged by the studio afterwards.
+- Checkout is disabled; the site directs buyers to a written availability enquiry.

@@ -2,27 +2,22 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ContactForm } from "@/components/contact/ContactForm";
+import { SITE } from "@/lib/site";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
-  title: "Contact & visit",
+  title: "Contact",
   description:
-    "Visit OUDYN WATCHS in Milano, book a private viewing or write to the studio about buying, selling or servicing a pre-owned luxury watch.",
+    "Contact OUDYN WATCHS about a pre-owned watch, a viewing or a trade enquiry.",
 };
-
-const STORE_IMAGES = [
-  { src: "/images/rolex/store-interior.jpg", alt: "The OUDYN studio interior in Milano", caption: "The viewing room" },
-  { src: "/images/rolex/store-front.jpg", alt: "OUDYN watch boutique storefront", caption: "Via Tortona 27" },
-  { src: "/images/rolex/store-street.jpg", alt: "Watch boutiques in the Milan design district", caption: "The district" },
-];
 
 export default function ContactPage() {
   return (
     <main id="main" className={styles.page}>
       <section className={styles.hero} aria-labelledby="contact-title">
         <Image
-          src="/images/rolex/store-interior.jpg"
-          alt="Interior of the OUDYN watch studio"
+          src="/images/rolex/rolex-dark.jpg"
+          alt=""
           fill
           priority
           sizes="100vw"
@@ -36,11 +31,11 @@ export default function ContactPage() {
             <span aria-current="page">Contact</span>
           </nav>
           <h1 id="contact-title" className={styles.title}>
-            Visit the studio. Or write first.
+            Ask about a watch.
           </h1>
           <p className={styles.lead}>
-            We keep one viewing room and a small bench. Appointments are preferred so the watch you
-            want to see is ready when you arrive.
+            Write to us about availability, condition, a viewing or a watch you are considering
+            selling. We answer from the same inbox.
           </p>
         </div>
       </section>
@@ -48,52 +43,33 @@ export default function ContactPage() {
       <section className={styles.info} id="visit" aria-labelledby="visit-title">
         <div className={styles.infoInner}>
           <div>
-            <p className={styles.kicker}>The studio</p>
+            <p className={styles.kicker}>Appointments</p>
             <h2 id="visit-title" className={styles.infoTitle}>
-              Via Tortona 27
+              Hong Kong &amp; Guangzhou
               <br />
-              20144 Milano, Italy
+              By appointment only
             </h2>
           </div>
           <div>
-            <p className={styles.kicker}>Opening hours</p>
+            <p className={styles.kicker}>Hours</p>
             <p className={styles.infoText}>
-              Tuesday–Saturday
+              Monday–Saturday
               <br />
-              10:00–19:00 CET
+              HKT / CST
               <br />
-              Sunday–Monday by appointment
+              The appointment address is shared before your visit.
             </p>
           </div>
           <div>
             <p className={styles.kicker}>Direct</p>
             <p className={styles.infoText}>
-              <a href="mailto:studio@oudyn.com">studio@oudyn.com</a>
+              <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
               <br />
-              <a href="tel:+390212345678">+39 02 1234 5678</a>
+              No telephone support is published yet.
               <br />
-              WhatsApp on request
+              Company details are provided before purchase.
             </p>
           </div>
-        </div>
-      </section>
-
-      <section className={styles.gallery} aria-label="Studio photographs">
-        <div className={styles.galleryInner}>
-          {STORE_IMAGES.map((image) => (
-            <figure key={image.src} className={styles.figure}>
-              <div className={styles.figureMedia}>
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  fill
-                  sizes="(max-width: 767px) 100vw, 33vw"
-                  className={styles.figureImage}
-                />
-              </div>
-              <figcaption>{image.caption}</figcaption>
-            </figure>
-          ))}
         </div>
       </section>
 
@@ -103,12 +79,11 @@ export default function ContactPage() {
             <p className={styles.kicker}>Write to us</p>
             <h2 id="write-title">Tell us what you are looking for.</h2>
             <p>
-              A reference, a budget, a wrist size or a watch you are thinking of selling. A real
-              person reads every message and replies within one working day.
+              A reference, a budget or a watch you are thinking of selling. Include the reference
+              number if you have it.
             </p>
             <p className={styles.small}>
-              For authentication or service requests, include the reference number engraved between
-              the lugs if you have it.
+              {SITE.independence} We do not offer online payment or instant checkout.
             </p>
           </div>
           <ContactForm />

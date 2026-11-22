@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import type { Product } from "@oudyn/contracts";
+import { isPlaceholderImage } from "@/lib/images";
 import styles from "./ProductGallery.module.css";
 
 export function ProductGallery({ product }: { product: Product }) {
@@ -51,15 +52,20 @@ export function ProductGallery({ product }: { product: Product }) {
             <Image
               src={src}
               alt={
-                index === 0
-                  ? `${product.name}, ${product.subtitle}`
-                  : `${product.name}, view ${index + 1}`
+                isPlaceholderImage(src)
+                  ? "Placeholder photograph — actual watch photographs are available on request"
+                  : `${product.name}, ${product.subtitle}`
               }
               fill
               sizes="(max-width: 1023px) 100vw, 73vw"
               priority={index === 0}
               className={styles.image}
             />
+            {index === 0 && isPlaceholderImage(src) && (
+              <figcaption className={styles.note}>
+                Placeholder image — actual watch photographs on request
+              </figcaption>
+            )}
             {index === 0 && images.length > 1 && (
               <div className={styles.dots} role="group" aria-label="Image navigation">
                 {images.map((item, dotIndex) => (

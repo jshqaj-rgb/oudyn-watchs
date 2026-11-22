@@ -7,24 +7,24 @@ import styles from "./page.module.css";
 export const metadata: Metadata = {
   title: "Sell or trade your watch",
   description:
-    "Sell or trade a pre-owned luxury watch with OUDYN WATCHS. Written valuation, insured collection and payment within two working days.",
+    "Sell or trade a pre-owned watch with OUDYN WATCHS. Send the details; any offer and payment terms are confirmed in writing after inspection.",
 };
 
 const STEPS = [
   {
     number: "01",
     title: "Send the basics",
-    text: "Reference, year, box and papers, service history and a few photographs. We reply with an indicative range within one working day.",
+    text: "Reference, year, box and papers, service history and a few photographs. We reply when we have enough information to assess the watch; we do not promise an instant price.",
   },
   {
     number: "02",
-    title: "Inspection in Milano",
-    text: "Bring the watch to the studio or send it insured. We check the case, movement, dial and paperwork, and confirm the final offer in writing.",
+    title: "Inspection before the sale",
+    text: "Bring the watch by appointment or send it as agreed in writing. We check what we can and confirm any final offer, payment method and timing in writing.",
   },
   {
     number: "03",
     title: "Paid or traded",
-    text: "Accept the offer and we pay by bank transfer within two working days. Trading against a watch in the collection is also possible.",
+    text: "If you accept, payment is made on the terms stated in the written offer. A trade against another watch is possible only if that watch is available.",
   },
 ];
 
@@ -78,7 +78,7 @@ export default function SellPage() {
               <li>Steel and gold sports watches</li>
               <li>Dress watches from the 1950s onward</li>
               <li>Full-set references with service history</li>
-              <li>Single-owner watches with a story</li>
+              <li>Single-owner watches with provenance</li>
               <li>Collections of three pieces or more</li>
             </ul>
             <p className={styles.note}>
@@ -86,7 +86,7 @@ export default function SellPage() {
               dials presented as original. If we cannot verify it, we say so.
             </p>
             <Link href="/authentication" className={styles.link}>
-              Read how we authenticate →
+              Read our inspection standard →
             </Link>
           </aside>
           <ContactForm

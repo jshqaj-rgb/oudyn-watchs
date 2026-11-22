@@ -32,7 +32,7 @@ export function AboutHero() {
           <span>
             {mounted && clock ? clock.time : "--:--:--"}
             <br />
-            Milano, Italy
+            Hong Kong
             <br />
             {mounted && weather ? `${weather.temperature}° ${weather.label}` : "Local weather"}
           </span>
@@ -42,9 +42,9 @@ export function AboutHero() {
             {mounted ? moon : "—"}
           </span>
           <span>
-            Est.
+            Based in
             <br />
-            2016 · Milano
+            Independent dealer
           </span>
         </div>
       </div>

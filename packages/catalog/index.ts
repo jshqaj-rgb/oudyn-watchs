@@ -66,9 +66,20 @@ function bool(value: unknown): boolean {
   return value === true || value === "true" || value === 1;
 }
 
+
+function scrubClaim(value: string): string {
+  return value
+    .replace(/假一赔十[，,。]?/g, "")
+    .replace(/官方保修至[^，,。;；]*/g, "")
+    .replace(/支持第三方检测[，,。]?/g, "Third-party inspection can be arranged. ")
+    .replace(/支持到店验货[，,。]?/g, "Viewing by appointment. ")
+    .replace(/[，,]\s*$/g, "")
+    .trim();
+}
+
 function strings(value: unknown): string[] {
   if (!Array.isArray(value)) return [];
-  return value.map((item) => text(item)).filter(Boolean);
+  return value.map((item) => scrubClaim(text(item))).filter(Boolean);
 }
 
 function stripHtml(value: string): string {
@@ -93,7 +104,7 @@ function paragraphs(value: unknown): string[] {
   if (!raw) return [];
   return stripHtml(raw)
     .split(/\n{2,}/)
-    .map((item) => item.trim())
+    .map((item) => scrubClaim(item))
     .filter(Boolean);
 }
 
@@ -137,7 +148,7 @@ function specRecord(value: unknown): Record<string, string> {
 function groupsFromRecord(record: Record<string, string>): SpecGroup[] {
   const groups: SpecGroup[] = [];
   const add = (title: string, items: Array<string | undefined>) => {
-    const clean = items.map((item) => text(item)).filter(Boolean);
+    const clean = items.map((item) => scrubClaim(text(item))).filter(Boolean);
     if (clean.length) groups.push({ title, items: clean });
   };
   const reference = [record.brand, record.model].filter(Boolean).join(" ");
@@ -147,9 +158,9 @@ function groupsFromRecord(record: Record<string, string>): SpecGroup[] {
   add("DIAL", [record.dial]);
   add("BRACELET", [record.bracelet]);
   add("CONDITION & SET", [
-    record.condition,
+    englishCondition(record.condition),
     record.year ? `Year ${record.year}` : "",
-    record.accessories ? `Set ${record.accessories}` : "",
+    record.accessories ? `Set ${englishSet(record.accessories)}` : "",
     record.warranty,
   ]);
   const known = new Set(["brand","model","reference","casesize","material","movement","dial","bracelet","condition","year","accessories","warranty"]);
@@ -190,6 +201,24 @@ function addOns(value: unknown): ProductAddOn[] {
     .filter((item): item is ProductAddOn => Boolean(item));
 }
 
+
+function englishCondition(value: string): string {
+  const v = value.trim();
+  if (/99|全新|unworn/i.test(v)) return "Like new";
+  if (/98|极好|excellent/i.test(v)) return "Excellent";
+  if (/95|很好|very good/i.test(v)) return "Very good";
+  if (/9成|良好|good/i.test(v)) return "Good";
+  return v;
+}
+
+function englishSet(value: string): string {
+  const v = value.trim();
+  if (/全套|full set/i.test(v)) return "Full set";
+  if (/盒证|box.*paper/i.test(v)) return "Box & papers";
+  if (/单表|watch only/i.test(v)) return "Watch only";
+  return v;
+}
+
 function localWatchImages(id: string, data: Record<string, unknown>, record: Record<string, string>): string[] {
   const model = `${record.model ?? ""} ${record.reference ?? ""} ${text(data.name)}`.toLowerCase();
   const pool = /daytona/.test(model)
@@ -202,7 +231,7 @@ function localWatchImages(id: string, data: Record<string, unknown>, record: Rec
   let hash = 0;
   for (let i = 0; i < id.length; i += 1) hash = (hash * 31 + id.charCodeAt(i)) >>> 0;
   const shift = hash % pool.length;
-  return [...pool.slice(shift), ...pool.slice(0, shift)].map((name) => `/images/rolex/${name}.jpg`);
+  return [`/images/rolex/${pool[shift]}.jpg`];
 }
 
 function isPlaceholderHost(url: string): boolean {
@@ -249,14 +278,14 @@ function toProduct(entry: EmdashEntry): Product | null {
   const includedRaw = data.included ?? data.whats_included ?? data.set_contents;
   const included = strings(includedRaw).length
     ? strings(includedRaw)
-    : [record.accessories ? `Set: ${record.accessories}` : ""].filter(Boolean);
+    : [record.accessories ? `Set: ${englishSet(record.accessories)}` : ""].filter(Boolean);
   const rawTags = strings(data.tags).map((tag) => tag.toUpperCase());
   const tags = Array.from(new Set(["PRE-OWNED", ...rawTags]));
   const { collection, collectionLabel } = collectionOf(data, category);
   const edition = number(data.edition);
   const year = number(data.year) ?? number(record.year) ?? 0;
-  const condition = text(data.condition) || record.condition || "";
-  const setLabel = text(data.set_label ?? data.set) || record.accessories || "";
+  const condition = englishCondition(text(data.condition) || record.condition || "");
+  const setLabel = englishSet(text(data.set_label ?? data.set) || record.accessories || "");
   const ref = text(data.reference ?? data.ref) || record.reference || text(data.sku) || id.toUpperCase();
   const caseSize = text(data.case_size) || record.casesize || "";
   const movement = text(data.movement) || record.movement || "";
@@ -293,7 +322,7 @@ function toProduct(entry: EmdashEntry): Product | null {
     sourceImage: sourceImages[0],
     addOns: addOns(data.add_ons ?? data.addons),
     included,
-    isNew: bool(data.is_new) || true,
+    isNew: bool(data.is_new),
     featured: bool(data.featured),
     soldOut: stock <= 0,
     releasedAt: year ? `${year}-01-01T00:00:00.000Z` : updated || new Date(0).toISOString(),

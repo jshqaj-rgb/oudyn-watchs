@@ -7,7 +7,7 @@ import {
   listProducts,
   storyCatalog,
 } from "../../../packages/catalog/index.ts";
-import type { OrderLineInput, OrderRequest, Product } from "../../../packages/contracts/index.ts";
+import type { Product } from "../../../packages/contracts/index.ts";
 
 type KV = {
   get(key: string, options?: { type?: "json" }): Promise<unknown>;
@@ -55,27 +55,6 @@ async function append(env: Env, key: string, record: unknown): Promise<boolean> 
   return true;
 }
 
-function totalFor(lines: OrderLineInput[], products: Product[]) {
-  const resolved = lines.map((line) => {
-    const product = products.find((item) => item.slug === line.slug);
-    if (!product) throw new Error(`Unknown watch: ${line.slug}`);
-    if (product.soldOut) throw new Error(`Sold out: ${product.name}`);
-    const addOn = product.addOns.find((item) => item.id === line.addOnId);
-    const quantity = Math.min(Math.max(Number(line.quantity) || 1, 1), 9);
-    return {
-      slug: product.slug,
-      name: product.name,
-      addOnId: addOn?.id,
-      addOnLabel: addOn?.label,
-      unitPrice: product.price + (addOn?.priceDelta ?? 0),
-      quantity,
-    };
-  });
-  return {
-    lines: resolved,
-    total: resolved.reduce((sum, line) => sum + line.unitPrice * line.quantity, 0),
-  };
-}
 
 export async function onRequest(context: Context): Promise<Response> {
   setup(context.env);
@@ -146,20 +125,7 @@ export async function onRequest(context: Context): Promise<Response> {
     }
 
     if (context.request.method === "POST" && route === "orders") {
-      const body = (await context.request.json()) as OrderRequest;
-      if (!body?.email || !body?.lines?.length) return json({ error: "Invalid order." }, 400);
-      const products = await getInventory();
-      const priced = totalFor(body.lines, products);
-      const order = {
-        orderId: `ODN-${Date.now().toString(36).toUpperCase()}`,
-        ...body,
-        ...priced,
-        status: "pending-confirmation",
-        createdAt: new Date().toISOString(),
-      };
-      const stored = await append(context.env, "orders", order);
-      if (!stored) return json({ error: "Order storage is not configured." }, 503);
-      return json({ ok: true, orderId: order.orderId, total: priced.total, email: body.email }, 201);
+      return json({ error: "Online checkout is disabled. Send an availability enquiry instead." }, 410);
     }
 
     if (context.request.method === "POST" && route === "newsletter") {

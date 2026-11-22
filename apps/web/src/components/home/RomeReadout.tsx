@@ -7,8 +7,8 @@ export function RomeReadout() {
   const { mounted, clock, moon, weather } = useRomeClock();
 
   return (
-    <p className={styles.readout} aria-label="Live time, moon phase and weather in Milan">
-      <span className={styles.readoutPlace}>Milano</span>
+    <p className={styles.readout} aria-label="Live time, moon phase and weather in Hong Kong">
+      <span className={styles.readoutPlace}>Hong Kong</span>
       <span aria-hidden="true" className={styles.dot} />
       <time suppressHydrationWarning>{mounted && clock ? clock.time : "--:--:--"}</time>
       <span aria-hidden="true" className={styles.dot} />

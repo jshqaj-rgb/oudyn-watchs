@@ -34,6 +34,24 @@
   mix-blend-mode: multiply;
 }
 
+.note {
+  position: absolute;
+  bottom: 22px;
+  left: 22px;
+  max-width: 280px;
+  margin: 0;
+  padding: 8px 10px;
+  border: 1px solid rgba(0, 0, 0, 0.16);
+  border-radius: var(--radius-panel);
+  background: rgba(255, 255, 255, 0.86);
+  font-family: var(--font-mono);
+  font-size: 8px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-graphite);
+}
+
 .dots {
   position: absolute;
   bottom: 20px;
@@ -78,7 +96,25 @@
     padding: 0;
   }
 
-  .dots {
+  .note {
+  position: absolute;
+  bottom: 22px;
+  left: 22px;
+  max-width: 280px;
+  margin: 0;
+  padding: 8px 10px;
+  border: 1px solid rgba(0, 0, 0, 0.16);
+  border-radius: var(--radius-panel);
+  background: rgba(255, 255, 255, 0.86);
+  font-family: var(--font-mono);
+  font-size: 8px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-graphite);
+}
+
+.dots {
     display: none;
   }
 }

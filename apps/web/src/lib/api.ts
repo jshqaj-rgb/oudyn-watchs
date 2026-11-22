@@ -7,14 +7,12 @@ import {
   getPublishedProducts,
   listProducts,
   collectionCatalog,
-  storyCatalog,
 } from "@oudyn/catalog";
 import type {
   ArchiveItem,
   CollectionWithCount,
   Product,
   ProductListResponse,
-  Story,
 } from "@oudyn/contracts";
 
 configureCatalog({
@@ -87,17 +85,8 @@ export async function getArchive(): Promise<ArchiveItem[]> {
     }));
 }
 
-export async function getStories(): Promise<Story[]> {
-  return storyCatalog as Story[];
-}
-
-export async function getStory(slug: string): Promise<Story> {
-  const story = storyCatalog.find((item) => item.slug === slug);
-  if (!story) throw new Error(`Story not found: ${slug}`);
-  return story as Story;
-}
 
 export { collectionCatalog, getInventory };
 export function formatPrice(price: number): string {
-  return `¥ ${price.toLocaleString("zh-CN")}`;
+  return `CNY ${price.toLocaleString("en-US")}`;
 }

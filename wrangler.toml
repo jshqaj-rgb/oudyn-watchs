@@ -10,4 +10,4 @@ compatibility_date = "2025-11-19"
 #   EMDASH_API_URL / EMDASH_ASSET_BASE (optional)
 #
 # Bind a KV namespace named OUDYN_KV in the Pages dashboard to enable
-# order, newsletter and contact submissions. Reads work without it.
+# contact enquiries. Reads work without it. Online checkout is disabled.

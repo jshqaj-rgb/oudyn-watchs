@@ -8,7 +8,7 @@ export function Hero() {
     <section className={styles.hero} aria-labelledby="hero-title">
       <Image
         src="/images/rolex/rolex-dark.jpg"
-        alt="A pre-owned Rolex dive watch photographed on dark coffee beans"
+        alt="Placeholder atmosphere photograph of a dive watch on dark coffee beans"
         fill
         priority
         sizes="100vw"
@@ -18,13 +18,13 @@ export function Hero() {
 
       <div className={styles.frame}>
         <div className={styles.copy}>
-          <p className={styles.kicker}>Oudyn Watchs · Milano · Est. 2016</p>
+          <p className={styles.kicker}>OUDYN · Hong Kong & Guangzhou · Independent dealer</p>
           <h1 id="hero-title" className={styles.title}>
-            Pre-owned luxury watches, authenticated in Milano.
+            Pre-owned Rolex, inspected and documented piece by piece.
           </h1>
           <p className={styles.sub}>
-            A small, hand-picked collection of modern and vintage references. Every watch is
-            inspected, serviced where needed, and photographed in our studio before it is offered.
+            Each listing describes the watch as we found it, with condition and set contents. Ask for
+            current photographs before paying. Ships worldwide from Hong Kong.
           </p>
 
           <div className={styles.actions}>
@@ -40,14 +40,14 @@ export function Hero() {
         </div>
 
         <aside className={styles.studio} aria-label="Visit the studio">
-          <p className={styles.studioLabel}>Visit the studio</p>
-          <p className={styles.studioTitle}>Via Tortona 27</p>
+          <p className={styles.studioLabel}>Visit by appointment</p>
+          <p className={styles.studioTitle}>Hong Kong &amp; Guangzhou</p>
           <p className={styles.studioText}>
-            20144 Milano, Italy
+            The appointment address is shared before your visit.
             <br />
-            Tuesday–Saturday, 10:00–19:00
+            Monday–Saturday, HKT / CST.
             <br />
-            Private viewings by appointment.
+            Private viewings only.
           </p>
           <Link href="/contact#visit" className={styles.studioLink}>
             Book a viewing <span aria-hidden="true">→</span>
@@ -56,7 +56,7 @@ export function Hero() {
       </div>
 
       <p className={styles.footnote} aria-hidden="true">
-        Authentication · Servicing · Provenance
+        Independent reseller · Not affiliated with Rolex SA
       </p>
     </section>
   );
